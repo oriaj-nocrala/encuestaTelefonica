@@ -1,0 +1,62 @@
+.form-group{
+  padding-top: 2em;
+}
+.form-text{
+  position:absolute;
+}
+.btn{
+  margin-left:auto;
+  text-transform: uppercase;
+  border-radius: 16px;
+  background-color: white;
+  color:black;
+  font-weight: bold;
+  width: 50%;
+  height: 2em;
+  vertical-align: center;
+}
+.titulo-login{
+  padding-top:1em;
+    font-weight: bold;
+}
+.div-btnsubmit{
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.div-recuperar{
+  text-transform: uppercase;
+  padding-bottom: 1em
+}
+
+.error{
+  color:red;
+}
+
+.fadein{
+  animation-duration: 1500ms;
+  animation-name: fadein;
+  animation-direction: alternate;
+}
+@keyframes fadein {
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+}
+
+.fadeout{
+  animation-duration: 1500ms;
+  animation-name: fadeout;
+  animation-direction: alternate;
+}
+@keyframes fadeout {
+  from{
+    opacity: 1;
+  }
+  to{
+    opacity: 0;
+  }
+}

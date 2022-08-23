@@ -1,0 +1,20 @@
+<div class="formulario"></div>
+<div class="text-center titulo-login">LOGIN</div>
+<form [formGroup]="loginForm" novalidate (ngSubmit)="submit()">
+  <div class="form-group">
+    <input type="email" class="form-control" formControlName="email" placeholder="Correo">
+    <small class="form-text fadein error" *ngIf="loginForm.controls['email'].touched && loginForm.controls['email'].errors?.['required']">
+      Por favor ingrese un correo electrónico.
+    </small>
+    <small class="form-text fadein error" *ngIf="loginForm.controls['email'].touched && loginForm.controls['email'].errors?.['email']">
+      Dirección de correo electrónico inválida.
+    </small>
+  </div>
+  <div class="form-group">
+    <input type="password" class="form-control" formControlName="password" placeholder="Constraseña">
+  </div>
+  <div class="text-center div-btnsubmit">
+    <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Ingresar</button>
+  </div>
+  <div class="text-center div-recuperar">Recuperar contraseña</div>
+</form>
