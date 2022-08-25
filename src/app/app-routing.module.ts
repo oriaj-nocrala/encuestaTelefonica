@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component'
 import { AplicacionComponent } from './aplicacion/aplicacion.component';
 import { ReporteComponent } from './aplicacion/reporte/reporte.component';
 import { AsignarComponent } from './aplicacion/asignar/asignar.component';
+import { LlamadasComponent } from './aplicacion/llamadas/llamadas.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
       {
         path: 'asignar',
         component: AsignarComponent
+      },
+      {
+        path: 'llamadas',
+        component: LlamadasComponent
       }
     ]
   },
