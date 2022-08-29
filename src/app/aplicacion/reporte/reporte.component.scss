@@ -1,3 +1,14 @@
-#reporte{
-  margin-left:300px;
+#contenedor{
+  display:flex;
+}
+
+.fila{
+  width:100%;
+}
+.col{
+  height:50%;
+}
+
+div{
+  border: 1px solid red;
 }

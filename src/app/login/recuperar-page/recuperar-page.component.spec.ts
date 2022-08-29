@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LlamadasComponent } from './llamadas.component';
+import { RecuperarPageComponent } from './recuperar-page.component';
 
-describe('LlamadasComponent', () => {
-  let component: LlamadasComponent;
-  let fixture: ComponentFixture<LlamadasComponent>;
+describe('RecuperarPageComponent', () => {
+  let component: RecuperarPageComponent;
+  let fixture: ComponentFixture<RecuperarPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LlamadasComponent ]
+      declarations: [ RecuperarPageComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(LlamadasComponent);
+    fixture = TestBed.createComponent(RecuperarPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

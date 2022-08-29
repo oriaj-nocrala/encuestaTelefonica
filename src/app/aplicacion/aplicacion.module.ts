@@ -1,19 +1,25 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { AplicacionComponent } from './aplicacion.component';
-import { AppRoutingModule } from '../app-routing.module';
 import { SharedModule } from './shared/shared.module';
+import { AplicacionRoutingModule } from './aplicacion-routing.module';
+import { ReporteComponent } from './reporte/reporte.component';
+import { AsignarComponent } from './asignar/asignar.component';
+import { LlamadasComponent } from './llamadas/llamadas.component';
+import { NgCircleProgressModule } from 'ng-circle-progress';
 
 
 
 @NgModule({
   declarations: [
-    AplicacionComponent
+    AplicacionComponent,
+    ReporteComponent,
+    AsignarComponent,
+    LlamadasComponent,
   ],
   imports: [
-    CommonModule,
-    AppRoutingModule,
-    SharedModule
+    AplicacionRoutingModule,
+    SharedModule,
+    NgCircleProgressModule.forRoot()
   ]
 })
 export class AplicacionModule { }
