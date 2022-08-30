@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
 import { CircleProgressComponent } from './circle-progress/circle-progress.component';
+import { AplicacionMaterialModule } from '../material/aplicacion-material.module';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { CircleProgressComponent } from './circle-progress/circle-progress.compo
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    AplicacionMaterialModule
   ],
   exports:[
     SidebarComponent,

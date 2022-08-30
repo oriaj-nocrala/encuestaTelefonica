@@ -1,19 +1,45 @@
-<div id="wrapper">
-  <div id="sidebar" class="col-4">
+<mat-sidenav-container id="wrapper">
+  <mat-sidenav #sidenav mode="side" opened id="sidebar">
+    
     <div class="sidebar-header">
-      <h3>DeliBest</h3>
+      DeliBest
     </div>
     <div id="usuario">
-      <h3>Isidora Flores</h3>
-      <h4>Administradora</h4>
+      <h1>Isidora Flores</h1>
+      <h3>Administradora</h3>
     </div>
-    <ul class="sidebar-nav">
-      <li class="sidebar-brand" routerLink="reporte" routerLinkActive="active">Reporte</li>
-      <li class="sidebar-brand" routerLink="asignar" routerLinkActive="active">Asignar</li>
-      <li class="sidebar-brand">Usuarios</li>
-      <li class="sidebar-brand">Empresas</li>
-      <li class="sidebar-brand">Estadísticas</li>
-      <li class="sidebar-brand" routerLink="llamadas" routerLinkActive="active">Llamadas</li>
-    </ul>
-  </div>
-</div>
+    <mat-nav-list class="sidebar-nav">
+      <mat-list-item class="sidebar-brand" routerLink="reporte" routerLinkActive="active">
+        <mat-icon mat-list-icon>assessment</mat-icon>
+        Reporte
+      </mat-list-item>
+      <mat-list-item class="sidebar-brand" routerLink="asignar" routerLinkActive="active">
+        <mat-icon mat-list-icon>assignment</mat-icon>
+        Asignar
+      </mat-list-item>
+      <mat-list-item class="sidebar-brand">
+        <mat-icon mat-list-icon>person</mat-icon>
+        Usuarios
+      </mat-list-item>
+      <mat-list-item class="sidebar-brand">
+        <mat-icon mat-list-icon>meeting_room</mat-icon>
+        Empresas
+      </mat-list-item>
+      <mat-list-item class="sidebar-brand">
+        <mat-icon mat-list-icon>pie_chart</mat-icon>
+        Estadísticas
+      </mat-list-item>
+      <mat-list-item class="sidebar-brand" routerLink="llamadas" routerLinkActive="active">
+        <mat-icon mat-list-icon>call</mat-icon>
+        Llamadas
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <!-- <mat-toolbar>
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </mat-toolbar> -->
+
+</mat-sidenav-container>

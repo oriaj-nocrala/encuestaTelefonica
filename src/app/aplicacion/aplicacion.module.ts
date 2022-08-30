@@ -6,6 +6,8 @@ import { ReporteComponent } from './reporte/reporte.component';
 import { AsignarComponent } from './asignar/asignar.component';
 import { LlamadasComponent } from './llamadas/llamadas.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
+import { AplicacionMaterialModule } from './material/aplicacion-material.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 
@@ -19,7 +21,9 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
   imports: [
     AplicacionRoutingModule,
     SharedModule,
-    NgCircleProgressModule.forRoot()
+    AplicacionMaterialModule,
+    NgCircleProgressModule.forRoot(),
+    FlexLayoutModule
   ]
 })
 export class AplicacionModule { }

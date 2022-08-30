@@ -14,6 +14,17 @@
 
 // }
 
+@font-face {
+  font-family: "MarkaziText";
+  src: url(../../../../assets/fonts/MarkaziText/MarkaziText-SemiBold.ttf);
+}
+
+.sidebar-header{
+  margin-top:15px;
+  height:40px;
+  font-family: "MarkaziText";
+  font-size:50px;
+}
 
 #wrapper{
   overflow-x:hidden;
@@ -29,12 +40,15 @@
   text-align: center;
   position:fixed;
 }
-li{
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
+mat-nav-list{
+  color:white;
 }
 #usuario{
   background-color: #6DB2DB;
+}
+
+.mat-list-item{
+  color:white;
 }
 
 // #wrapper {
