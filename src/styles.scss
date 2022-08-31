@@ -1,11 +1,60 @@
 /* You can add global styles to this file, and also import other style files */
 body{
-  background-color: gray;
+
   height:100%;
   width:100%;
-  display:flex;
 }
 html, body { 
   height: 100%;
 }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.estirar{
+  width:95%;
+  margin-left:2.5%;
+}
+
+#content {
+  height: 300px;
+  text-align: center;
+  font-size: 26px;
+  color: #000;
+  position:relative;
+}
+
+#fondo{
+  width:5076px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+  background: url('./assets/images/trama_back_app.svg')  0% 0% repeat;
+  background-size:120px;
+  
+  
+  animation-name: MOVE-BG;
+  // animation: slide 60s linear infinite;
+  animation-duration: 60s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes MOVE-BG {
+  from {
+    transform: translateX(0);
+  }
+  to { 
+    transform: translateX(-1692px);
+  }
+}
+
+// @keyframes MOVE_BG { 
+//   0% {transform: translateX(0);} 
+//   20% {transform: translateX(0);} 
+//   40% {transform: translateX(-50%);} 
+//   50% {transform: translateX(0);}
+//   60% {transform: translateX(-25%);} 
+//   80% {transform: translateX(0);} 
+//   100% {transform: translateX(0);} 
+// }

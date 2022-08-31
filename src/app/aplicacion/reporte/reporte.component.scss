@@ -1,12 +1,8 @@
 mat-grid-tile{
-  background-color: lightblue;
+  background-color: rgba(211, 211, 211, 0.4);
+  border-radius: 20px;
 }
 
-// mat-grid-list{
-//   height:1000px;
-//   width:1200px;
-// }
-
-div{
-  border: 1px solid white;
+mat-grid-list{
+  margin:10px;
 }

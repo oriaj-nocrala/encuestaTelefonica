@@ -6,6 +6,9 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatTableModule} from '@angular/material/table'; 
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatDialogModule} from '@angular/material/dialog'; 
 
 
 @NgModule({
@@ -16,7 +19,10 @@ import {MatTableModule} from '@angular/material/table';
     MatButtonModule,
     MatListModule,
     MatGridListModule,
-    MatTableModule
+    MatTableModule,
+    MatFormFieldModule,
+    MatPaginatorModule,
+    MatDialogModule
   ]
 })
 export class AplicacionMaterialModule { }

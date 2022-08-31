@@ -1,31 +1,6 @@
-// .container{
-//   background:blue;
-//   width:1920px;
-// }
-
-// .col{
-//   background:white;
-//   margin:10px
-// }
-
-// .row{
-//   width:100%;
-
-
-// }
-
 @font-face {
   font-family: "MarkaziText";
   src: url(../../../../assets/fonts/MarkaziText/MarkaziText-SemiBold.ttf);
-}
-
-.sidebar-header{
-  margin-top:15px;
-  height:40px;
-  font-family: "MarkaziText";
-  font-size:50px;
-  color:#ce0020;
-  text-shadow: 0.5px 0.5px white;
 }
 
 #wrapper{
@@ -53,47 +28,49 @@ mat-nav-list{
   color:white;
 }
 
-// #wrapper {
-//   overflow-x: hidden;
-// }
+mat-sidenav-container{
+  background: none;
+}
 
-// #sidebar-wrapper {
-//   min-height: 100vh;
-//   margin-left: -15rem;
-//   -webkit-transition: margin .25s ease-out;
-//   -moz-transition: margin .25s ease-out;
-//   -o-transition: margin .25s ease-out;
-//   transition: margin .25s ease-out;
-// }
+mat-toolbar{
+  background-color: rgba(215,225,226,1);
+  display:flex;
+}
 
-// #sidebar-wrapper .sidebar-heading {
-//   padding: 0.875rem 1.25rem;
-//   font-size: 1.2rem;
-// }
+#logosistema{
+  height:40%;
+  cursor:pointer;
+  transition: transform .1s;
+}
+#logosistema:hover{
+  transform: scale(1.1);
+}
 
-// #sidebar-wrapper .list-group {
-//   width: 15rem;
-// }
 
-// #page-content-wrapper {
-//   min-width: 100vw;
-// }
+.sidebar-header{
+  margin-top:15px;
+  height:40px;
+  font-family: "MarkaziText";
+  font-size:50px;
+  color:white;
+  text-shadow: 2px 2px #06273a;
+  transition: transform 1s, color 1s, text-shadow 4s;
+  cursor:default;
+}
 
-// body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
-//   margin-left: 0;
-// }
+.sidebar-header:hover{
+  // transform: scale(1.2);
+  // transform:rotateZ(180deg)
+  transform:rotate3d(1, -1, 0, 30deg);
+  color:#c21930;
+  text-shadow:2px 2px white;
+}
 
-// @media (min-width: 768px) {
-//   #sidebar-wrapper {
-//       margin-left: 0;
-//   }
+#routera{
+  margin:2.5%;
+}
 
-//   #page-content-wrapper {
-//       min-width: 0;
-//       width: 100%;
-//   }
 
-//   body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
-//       margin-left: -15rem;
-//   }
-// }
+.spacer{
+  flex-grow: 1;
+}

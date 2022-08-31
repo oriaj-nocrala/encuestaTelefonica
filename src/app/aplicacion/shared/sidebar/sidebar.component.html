@@ -2,7 +2,7 @@
   <mat-sidenav #sidenav mode="side" opened id="sidebar">
 
     <div class="sidebar-header">
-      DeliBest
+      <span id=logodelibest>DeliBest</span>
     </div>
     <div id="usuario">
       <h1>Isidora Flores</h1>
@@ -17,15 +17,15 @@
         <mat-icon mat-list-icon>assignment</mat-icon>
         Asignar
       </mat-list-item>
-      <mat-list-item class="sidebar-brand">
+      <mat-list-item class="sidebar-brand" routerLink="usuarios" routerLinkActive="active">
         <mat-icon mat-list-icon>person</mat-icon>
         Usuarios
       </mat-list-item>
-      <mat-list-item class="sidebar-brand">
+      <mat-list-item class="sidebar-brand" routerLink="empresas" routerLinkActive="active">
         <mat-icon mat-list-icon>meeting_room</mat-icon>
         Empresas
       </mat-list-item>
-      <mat-list-item class="sidebar-brand">
+      <mat-list-item class="sidebar-brand" routerLink="estadisticas" routerLinkActive="active">
         <mat-icon mat-list-icon>pie_chart</mat-icon>
         Estadísticas
       </mat-list-item>
@@ -37,9 +37,15 @@
   </mat-sidenav>
 
   <mat-toolbar>
-    <button mat-icon-button (click)="sidenav.toggle()">
+    <!-- <button mat-icon-button (click)="sidenav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
+    <span class="spacer"></span>
+    <img id="logosistema" src="../../../../assets/images/LOGO_SistemaEncuestaManipuladoras.png"> -->
+    <img id="logosistema" title="Alternar menú" src="../../../../assets/images/LOGO_SistemaEncuestaManipuladoras.png" (click)="sidenav.toggle()">
   </mat-toolbar>
-<router-outlet></router-outlet>
+  <div id="routera">
+    <router-outlet></router-outlet>
+
+  </div>
 </mat-sidenav-container>

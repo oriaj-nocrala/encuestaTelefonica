@@ -4,6 +4,9 @@ import { ReporteComponent } from './reporte/reporte.component';
 import { AsignarComponent } from './asignar/asignar.component';
 import { LlamadasComponent } from './llamadas/llamadas.component';
 import { AplicacionComponent } from './aplicacion.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
+import { EstadisticasComponent } from './estadisticas/estadisticas.component';
+import { EmpresasComponent } from './empresas/empresas.component';
 
 const routes:Routes =   
 [
@@ -23,6 +26,18 @@ const routes:Routes =
       {
         path: 'llamadas',
         component: LlamadasComponent
+      },
+      {
+        path:'usuarios',
+        component: UsuariosComponent
+      },
+      {
+        path:'estadisticas',
+        component: EstadisticasComponent
+      },
+      {
+        path:'empresas',
+        component: EmpresasComponent
       }
     ]
   }
