@@ -9,6 +9,7 @@ import { AgregarDialogComponent } from './agregar/agregar.component';
 import { EditarDialogComponent } from './editar/editar.component';
 import { EliminarDialogComponent } from './eliminar/eliminar.component';
 import { Usuario } from '../shared/modelos/usuario';
+import { DataService } from '../shared/servicios/data.service';
 
 export interface Asignacion {
   nombre: string,
@@ -29,11 +30,11 @@ const ELEMENT_DATA: Asignacion[] = [
   styleUrls: ['./usuarios.component.scss']
 })
 export class UsuariosComponent implements OnInit {
-  displayedColumns = ['id', 'title', 'state', 'url', 'created_at', 'updated_at', 'actions'];
-  exampleDatabase: DataService | null;
-  dataSource: ExampleDataSource | null;
-  index: number;
-  id: number;
+  displayedColumns = ['rut', 'usuario', 'nombre', 'apellido', 'correo', 'telefono', 'tipo'];
+  exampleDatabase!: DataService | null;
+  dataSource!: ExampleDataSource | null;
+  index: number = 0;
+  id: number = 0;
 
   constructor(public httpClient: HttpClient,
               public dialog: MatDialog,
