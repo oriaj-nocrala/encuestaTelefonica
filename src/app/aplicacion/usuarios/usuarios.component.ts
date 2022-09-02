@@ -11,19 +11,6 @@ import { EliminarDialogComponent } from './eliminar/eliminar.component';
 import { Usuario } from '../shared/modelos/usuario';
 import { DataService } from '../shared/servicios/data.service';
 
-export interface Asignacion {
-  nombre: string,
-  apellido: string,
-  correo: string,
-  rut: string,
-  telefono: number
-}
-const ELEMENT_DATA: Asignacion[] = [
-  {nombre: 'Javiera', apellido:"Sepúlveda", correo:"javiera.sepulveda@brechadigital.cl", rut:'50', telefono:150},
-  {nombre: 'Carolina', apellido:"Frattasio", correo:'javiera.sepulveda@brechadigital.cl', rut:'100', telefono:240},
-  {nombre: 'Katherine', apellido:"Orellana", correo:'javiera.sepulveda@brechadigital.cl', rut:'23', telefono:87}
-];
-
 @Component({
   selector: 'app-usuarios',
   templateUrl: './usuarios.component.html',
@@ -53,8 +40,9 @@ export class UsuariosComponent implements OnInit {
   }
 
   addNew() {
+    const usuario: Usuario;
     const dialogRef = this.dialog.open(AgregarDialogComponent, {
-      data: {issue: Usuario }
+      data: {issue: usuario }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -214,12 +202,13 @@ export class ExampleDataSource extends DataSource<Usuario> {
       let propertyB: number | string = '';
 
       switch (this._sort.active) {
-        case 'id': [propertyA, propertyB] = [a.id, b.id]; break;
-        case 'title': [propertyA, propertyB] = [a.title, b.title]; break;
-        case 'state': [propertyA, propertyB] = [a.state, b.state]; break;
-        case 'url': [propertyA, propertyB] = [a.url, b.url]; break;
-        case 'created_at': [propertyA, propertyB] = [a.created_at, b.created_at]; break;
-        case 'updated_at': [propertyA, propertyB] = [a.updated_at, b.updated_at]; break;
+        case 'rut': [propertyA, propertyB] = [a.rut, b.rut]; break;
+        case 'usuario': [propertyA, propertyB] = [a.user, b.user]; break;
+        case 'nombre': [propertyA, propertyB] = [a.nombre, b.nombre]; break;
+        case 'apellido': [propertyA, propertyB] = [a.apellido, b.apellido]; break;
+        case 'correo': [propertyA, propertyB] = [a.correo, b.correo]; break;
+        case 'telefono': [propertyA, propertyB] = [a.telefono, b.telefono]; break;
+        // case 'tipo': [propertyA, propertyB] = [a.tipo, b.tipo]; break;
       }
 
       const valueA = isNaN(+propertyA) ? propertyA : +propertyA;

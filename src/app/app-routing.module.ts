@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path:'login',
+    path:'login',//falta el jwt
     loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
   },
   {

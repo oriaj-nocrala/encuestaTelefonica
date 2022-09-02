@@ -5,7 +5,7 @@ import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 
 @Injectable()
 export class DataService {
-  private readonly API_URL = 'https://api.github.com/repos/angular/angular/issues';
+  private readonly API_URL = 'http://localhost:3000';
 
   dataChange: BehaviorSubject<Usuario[]> = new BehaviorSubject<Usuario[]>([]);
   // Temporarily stores data from dialogs
@@ -23,7 +23,7 @@ export class DataService {
 
   /** CRUD METHODS */
   getAllIssues(): void {
-    this.httpClient.get<Usuario[]>(this.API_URL).subscribe(data => {
+    this.httpClient.get<Usuario[]>(`${this.API_URL}/getDatosUsuarios`).subscribe(data => {
         this.dataChange.next(data);
       },
       (error: HttpErrorResponse) => {
@@ -31,14 +31,38 @@ export class DataService {
       });
   }
 
-  // DEMO ONLY, you can find working methods below
-  addIssue (issue: Usuario): void {
-    this.dialogData = issue;
-  }
+  addItem(u: Usuario): void {
+    this.httpClient.put(`${this.API_URL}/putUsuario`, u).subscribe(data => {
+      this.dialogData = u;
+      alert("bien");
+      },
+      (err: HttpErrorResponse) => {
+      alert('Error occurred. Details: ' + err.name + ' ' + err.message);
+    });
+   }
 
-  updateIssue (issue: Usuario): void {
-    this.dialogData = issue;
-  }
+    // UPDATE, PUT METHOD
+    updateItem(u: Usuario): void {
+      this.httpClient.put(this.API_URL + u.rut, u).subscribe(data => {
+          this.dialogData = u;
+          alert("bien");
+        },
+        (err: HttpErrorResponse) => {
+          alert('Error occurred. Details: ' + err.name + ' ' + err.message);
+        }
+      );
+    }
+
+    deleteItem(id: number): void {
+      this.httpClient.delete(`${this.API_URL}/eliminarUsuarioPorRut` + id).subscribe(data => {
+        console.log(data);
+        alert("bien");
+        },
+        (err: HttpErrorResponse) => {
+          alert('Error occurred. Details: ' + err.name + ' ' + err.message);
+        }
+      );
+    }
 
   deleteIssue (id: number): void {
     console.log(id);
