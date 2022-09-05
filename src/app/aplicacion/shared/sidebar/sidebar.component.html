@@ -6,21 +6,24 @@
     </div>
     <div id="usuario">
       <h1>{{auth.nombre + " " + auth.apellido}}</h1>
-      <h3>Administradora</h3>
+      <h3>{{auth.tipo | tipousuario}}</h3>
     </div>
     <mat-nav-list class="sidebar-nav">
-      <mat-list-item class="sidebar-brand" routerLink="reporte" routerLinkActive="active">
-        <mat-icon mat-list-icon>assessment</mat-icon>
-        Reporte
-      </mat-list-item>
-      <mat-list-item class="sidebar-brand" routerLink="asignar" routerLinkActive="active">
-        <mat-icon mat-list-icon>assignment</mat-icon>
-        Asignar
-      </mat-list-item>
-      <mat-list-item class="sidebar-brand" routerLink="usuarios" routerLinkActive="active">
-        <mat-icon mat-list-icon>person</mat-icon>
-        Usuarios
-      </mat-list-item>
+      <span *ngIf="auth.tipo == '6311110c9582ca5ed94ede0d'; else anal">
+
+        <mat-list-item class="sidebar-brand" routerLink="reporte" routerLinkActive="active">
+          <mat-icon mat-list-icon>assessment</mat-icon>
+          Reporte
+        </mat-list-item>
+        <mat-list-item class="sidebar-brand" routerLink="asignar" routerLinkActive="active">
+          <mat-icon mat-list-icon>assignment</mat-icon>
+          Asignar
+        </mat-list-item>
+        <mat-list-item class="sidebar-brand" routerLink="usuarios" routerLinkActive="active">
+          <mat-icon mat-list-icon>person</mat-icon>
+          Usuarios
+        </mat-list-item>
+      </span>
       <!-- <mat-list-item class="sidebar-brand" routerLink="empresas" routerLinkActive="active">
         <mat-icon mat-list-icon>meeting_room</mat-icon>
         Empresas
@@ -29,10 +32,12 @@
         <mat-icon mat-list-icon>pie_chart</mat-icon>
         Estadísticas
       </mat-list-item> -->
-      <mat-list-item class="sidebar-brand" routerLink="llamadas" routerLinkActive="active">
-        <mat-icon mat-list-icon>call</mat-icon>
-        Llamadas
-      </mat-list-item>
+      <ng-template #anal>
+        <mat-list-item class="sidebar-brand" routerLink="llamadas" routerLinkActive="active">
+          <mat-icon mat-list-icon>call</mat-icon>
+          Llamadas
+        </mat-list-item>
+      </ng-template>
       <div class="spacer"></div>
       <mat-list-item class="sidebar-brand" (click)="logout()">
         <mat-icon mat-list-icon>logout</mat-icon>

@@ -1,12 +1,3 @@
-export class Issue {
-  id!: number;
-  title!: string;
-  state!: string;
-  url!: string;
-  created_at!: string;
-  updated_at!: string;
-}
-
 export class Usuario{
   _id!: string;
   rut!: number;
@@ -16,5 +7,7 @@ export class Usuario{
   apellido!: string;
   correo!: string;
   telefono!: number;
+  tipo!: string;
+  fecha_creacion!: Date;
   // fecha_creacion: Date;
 }

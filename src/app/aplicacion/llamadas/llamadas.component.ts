@@ -1,6 +1,7 @@
 import { DataService } from './../shared/servicios/data.service';
 import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
+import { AuthService } from 'src/app/login/services/auth.service';
 
 @Component({
   selector: 'app-llamadas',
@@ -15,20 +16,35 @@ export class LlamadasComponent implements OnInit {
   p4:any;
   p5:any;
   datosPadron:any[] = [];
+  datosAsignaciones:any[] = [];
   posiblesRespuestas:any[] = [];
   preguntas:any[] = [];
-  constructor( public dataService: DataService) { }
+  constructor( public dataService: DataService,
+    private authService:AuthService) { }
 
   ngOnInit(): void {
-    this.obtenerDatosPadron();
+    this.obtenerDatosPadron(); //Por bodega si el usuario está asignado
     this.obtenerPosiblesRespuestas();
     this.obtenerPreguntas();
+    this.obtenerDatosAsignaciones();
+
   }
 
-  obtenerDatosPadron(){
+  obtenerDatosPadron(){ //Obtiene 5 valores aleatorios del padrón
     this.dataService.getDatosPadron().subscribe({
       next:(padron) =>{
         this.datosPadron = padron;
+      },
+      error:(e: HttpErrorResponse) =>{
+        console.log(e);
+      }
+    });
+  }
+
+  obtenerDatosAsignaciones(){ //Una asignación por usuario
+    this.dataService.getDatosAsignaciones2().subscribe({
+      next:(asignaciones) =>{
+        this.datosAsignaciones = asignaciones;
       },
       error:(e: HttpErrorResponse) =>{
         console.log(e);
@@ -61,11 +77,12 @@ export class LlamadasComponent implements OnInit {
 
 
   guardar(){
-    this.dataService.addRespuestas('6312c04fa3a101b316a47037',this.datosPadron[0]._id, this.preguntas, [this.p1,this.p2,this.p3,this.p4,this.p5]);
+    this.dataService.addRespuestas(this.authService.auth._id,this.datosPadron[0]._id, this.preguntas, [this.p1,this.p2,this.p3,this.p4,this.p5]);
+    this.datosPadron.shift();
   }
 
   espera(){
-
+    this.datosPadron.shift();
   }
 
   setp1(event:any){

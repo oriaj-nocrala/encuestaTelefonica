@@ -4,7 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {MatDialog} from '@angular/material/dialog';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
-import { Issue, Usuario } from '../shared/modelos/usuario';
+import { Usuario } from '../shared/modelos/usuario';
 import {DataSource} from '@angular/cdk/collections';
 import {AddDialogComponent} from './agregar/agregar.component';
 import {EditDialogComponent} from './editar/editar.component';
@@ -44,7 +44,7 @@ export class UsuariosComponent implements OnInit {
 
   addNew() {
     const dialogRef = this.dialog.open(AddDialogComponent, {
-      data: {issue: Issue }
+      data: {issue: Usuario }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -53,6 +53,7 @@ export class UsuariosComponent implements OnInit {
         // For add we're just pushing a new row inside DataService
         this.exampleDatabase!.dataChange.value.push(this.dataService.getDialogData());
         this.refreshTable();
+        this.loadData();
       }
     });
   }

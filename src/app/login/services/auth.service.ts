@@ -24,7 +24,8 @@ export class AuthService {
     console.log(localStorage.getItem('token'));
     return this.http.get<Usuario>(`${this.baseUrl}/getUsuarioPorId?id=${localStorage.getItem('token')}`)
     .pipe( map (auth => {
-      this._auth = auth
+      this._auth = auth;
+      console.log(auth);
       return true;
     }));
   }

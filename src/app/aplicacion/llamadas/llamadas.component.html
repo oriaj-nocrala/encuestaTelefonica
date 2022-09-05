@@ -3,7 +3,7 @@
     <td>
       <label>NOMBRE</label>
     </td>
-    <td>{{datosPadron[0].nombre + " " + datosPadron[0].apellido_paterno + " " + datosPadron[0].apellido_materno}} </td>
+    <td>{{datosPadron[0].nombre + " " + datosPadron[0].apellido_paterno + " " + datosPadron[0].apellido_materno | titlecase}} </td>
   </tr>
   <tr class="row">
     <td>
@@ -15,19 +15,19 @@
     <td>
       <label>MAIL</label>
     </td>
-    <td>{{datosPadron[0].email}} </td>
+    <td>{{datosPadron[0].email | lowercase}} </td>
   </tr>
   <tr class="row">
     <td>
       <label>EMPRESA</label>
     </td>
-    <td>{{datosPadron[0].manipuladora}} </td>
+    <td>{{ datosPadron[0].manipuladora | empresa }} </td>
   </tr>
   <tr class="row">
     <td>
       <label>BODEGA</label>
     </td>
-    <td>{{datosPadron[0].bodega}} </td>
+    <td>{{datosPadron[0].bodega | titlecase}} </td>
   </tr>
 </table>
 

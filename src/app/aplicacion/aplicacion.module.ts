@@ -18,6 +18,7 @@ import { AddDialogComponent } from './usuarios/agregar/agregar.component';
 import { EditDialogComponent } from './usuarios/editar/editar.component';
 import { DeleteDialogComponent } from './usuarios/eliminar/eliminar.component';
 import { HttpClientModule } from '@angular/common/http';
+import { EmpresaPipe } from './pipes/empresa.pipe';
 
 
 
@@ -32,7 +33,9 @@ import { HttpClientModule } from '@angular/common/http';
     EmpresasComponent,
     AddDialogComponent,
     EditDialogComponent,
-    DeleteDialogComponent
+    DeleteDialogComponent,
+    EmpresaPipe,
+    
   ],
   imports: [
     AplicacionRoutingModule,

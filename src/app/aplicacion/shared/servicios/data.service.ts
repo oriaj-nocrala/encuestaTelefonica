@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {Usuario, Issue} from '../modelos/usuario';
+import {Usuario} from '../modelos/usuario';
 import { Empresa } from '../modelos/empresa';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 
@@ -45,7 +45,7 @@ export class DataService {
 
   // UPDATE, PUT METHOD
   addIssue(usuario: Usuario): void {
-    this.httpClient.put(`${this.API_URL}/putUsuario?rut=${usuario.rut}&nombre=${usuario.nombre}&apellido=${usuario.apellido}&correo=${usuario.correo}&telefono=${usuario.telefono}&user=${usuario.user}`, usuario).subscribe(data => {
+    this.httpClient.put(`${this.API_URL}/putUsuario?rut=${usuario.rut}&nombre=${usuario.nombre}&apellido=${usuario.apellido}&correo=${usuario.correo}&telefono=${usuario.telefono}&user=${usuario.user}&pass=${usuario.pass}`, usuario).subscribe(data => {
         this.dialogData = usuario;
         // this.toasterService.showToaster('Successfully edited', 3000);
         console.log("Bakán.");
@@ -128,7 +128,7 @@ export class DataService {
     this.dialogData = usuario
   }
 
-  deleteUsuarioe (rut: number): void {
+  deleteUsuario (rut: number): void {
     console.log(rut);
   }
 

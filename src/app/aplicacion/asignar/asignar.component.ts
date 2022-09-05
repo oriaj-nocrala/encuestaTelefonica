@@ -27,7 +27,7 @@ export class AsignarComponent implements OnInit {
 
   constructor(public dataService: DataService) { }
 
-  empresas:Empresa[]  = [];
+  empresas:Empresa[] = [];
   bodegas: any[] = [];
   bodegasSelects: any[] = [];
   analistas:Usuario[] = [];
@@ -41,6 +41,7 @@ export class AsignarComponent implements OnInit {
     this.obtenerEmpresas();
     this.obtenerBodegas();
     this.obtenerAsignaciones2();
+    this.obtenerAnalistas();
   }
 
   obtenerEmpresas(){
@@ -70,6 +71,7 @@ export class AsignarComponent implements OnInit {
     this.dataService.getDatosAnalistas().subscribe({
       next:(analistas) =>{
         this.analistas = analistas;
+        console.log(this.analistas)
       },
       error:(e: HttpErrorResponse) =>{
         console.log(e);
