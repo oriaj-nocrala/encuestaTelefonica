@@ -17,13 +17,13 @@ export class AddDialogComponent {
               public dataService: DataService) { }
 
   formControl = new FormControl('', [
-    Validators.required
-    // Validators.email,
+    Validators.required,
+     Validators.email,
   ]);
 
   getErrorMessage() {
-    return this.formControl.hasError('required') ? 'Required field' :
-      this.formControl.hasError('correo') ? 'Not a valid email' :
+    return this.formControl.hasError('required') ? 'Campo requerido' :
+      this.formControl.hasError('email') ? 'Correo electrónico inválido' :
         '';
   }
 

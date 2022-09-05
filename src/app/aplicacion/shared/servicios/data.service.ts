@@ -107,13 +107,14 @@ export class DataService {
   // }
 
   deleteIssue(rut: number): void {
-    this.httpClient.delete(`${this.API_URL}/eliminarUsuarioPorRut?rut=${rut}`).subscribe(data => {
+    this.httpClient.delete(`${this.API_URL}/eliminarUsuarioPorRut?rut=${rut}`).subscribe({
+      next: (data) => {
       console.log(data);
       console.log("Bakán.");
       },
-      (err: HttpErrorResponse) => {
+      error: (err: HttpErrorResponse) => {
         console.log("De perro.");      }
-    );
+      });
   }
 
 

@@ -41,6 +41,11 @@
       <mat-cell *matCellDef="let row"> {{row.user}}</mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="pass">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Pass</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.pass}}</mat-cell>
+    </ng-container>
+
     <ng-container matColumnDef="telefono">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Telefono</mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.telefono}}</mat-cell>

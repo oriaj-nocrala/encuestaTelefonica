@@ -23,19 +23,29 @@
       <mat-form-field color="accent">
         <input matInput #inputstate class="form-control" placeholder="Apellido" [(ngModel)]="data.apellido" name="apellido" maxlength="10" required >
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
-        <mat-hint align="end">{{inputstate.value.length || 0}}/10</mat-hint>
       </mat-form-field>
     </div>
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput placeholder="Correo" [(ngModel)]="data.correo" name="correo">
+        <input matInput placeholder="Correo" [(ngModel)]="data.correo" name="correo" email>
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput placeholder="User" [(ngModel)]="data.user" name="user">
+        <input matInput #inputuser placeholder="User" [(ngModel)]="data.user" name="user" maxlength="20" required>
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+        <mat-hint align="end">{{inputuser.value.length || 0}}/20</mat-hint>
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput #inputpass type="password" placeholder="Contraseña" [(ngModel)]="data.pass" name="pass">
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+        <mat-hint align="end">{{inputpass.value.length || 0}}/20</mat-hint>
       </mat-form-field>
     </div>
 
@@ -44,6 +54,7 @@
         <input matInput placeholder="Teléfono" [(ngModel)]="data.telefono" name="telefono">
       </mat-form-field>
     </div>
+
 
     <div mat-dialog-actions>
       <button mat-button type="submit" [disabled]="!formControl.valid" [mat-dialog-close]="1" (click)="confirmAdd()">Guardar</button>
