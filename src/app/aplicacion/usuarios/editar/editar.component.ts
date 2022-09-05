@@ -1,16 +1,16 @@
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import {Component, Inject} from '@angular/core';
-import {DataService} from '../../services/data.service';
+import {DataService} from '../../shared/servicios/data.service';
 import {FormControl, Validators} from '@angular/forms';
 
 @Component({
-  selector: 'app-editar',
-  templateUrl: './edit.component.html',
-  styleUrls: ['./editar.component.scss']
+  selector: 'app-baza.dialog',
+  templateUrl: '../../usuarios/editar/editar.component.html',
+  styleUrls: ['../../usuarios/editar/editar.component.scss']
 })
-export class EditarDialogComponent {
+export class EditDialogComponent {
 
-  constructor(public dialogRef: MatDialogRef<EditarDialogComponent>,
+  constructor(public dialogRef: MatDialogRef<EditDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any, public dataService: DataService) { }
 
   formControl = new FormControl('', [
@@ -20,7 +20,7 @@ export class EditarDialogComponent {
 
   getErrorMessage() {
     return this.formControl.hasError('required') ? 'Required field' :
-      this.formControl.hasError('email') ? 'Not a valid email' :
+      this.formControl.hasError('correo') ? 'Not a valid email' :
         '';
   }
 

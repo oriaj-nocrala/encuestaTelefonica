@@ -1,3 +1,99 @@
-<div>
-  <p>llamadas works!</p>
-</div>
+<table id="datos">
+  <tr class="row">
+    <td>
+      <label>NOMBRE</label>
+    </td>
+    <td>{{datosPadron[0].nombre + " " + datosPadron[0].apellido_paterno + " " + datosPadron[0].apellido_materno}} </td>
+  </tr>
+  <tr class="row">
+    <td>
+      <label>TELEFONO</label>
+    </td>
+    <td>{{datosPadron[0].telefono}} </td>
+  </tr>
+  <tr class="row">
+    <td>
+      <label>MAIL</label>
+    </td>
+    <td>{{datosPadron[0].email}} </td>
+  </tr>
+  <tr class="row">
+    <td>
+      <label>EMPRESA</label>
+    </td>
+    <td>{{datosPadron[0].manipuladora}} </td>
+  </tr>
+  <tr class="row">
+    <td>
+      <label>BODEGA</label>
+    </td>
+    <td>{{datosPadron[0].bodega}} </td>
+  </tr>
+</table>
+
+
+<table id="preguntas">
+  <tr class="row">
+    <td>
+      <label>{{preguntas[0].pregunta}}</label>
+    </td>
+    <td>
+      <mat-radio-group aria-label="p1" name="p1" (change)="setp1($event.value)">
+        <mat-radio-button value="si">Sí</mat-radio-button>
+        <mat-radio-button value="no">No</mat-radio-button>
+        <mat-radio-button value="nr">No responde</mat-radio-button>
+      </mat-radio-group>
+    </td>
+  </tr>
+  <tr class="row">
+    <td>
+      <label>{{preguntas[1].pregunta}}</label>
+    </td>
+    <td>
+      <mat-radio-group aria-label="p2" name="p2" (change)="setp2($event.value)">
+        <mat-radio-button value="si">Sí</mat-radio-button>
+        <mat-radio-button value="no">No</mat-radio-button>
+        <mat-radio-button value="nr">No responde</mat-radio-button>
+      </mat-radio-group>
+    </td>
+  </tr>
+  <tr class="row">
+    <td>
+      <label>{{preguntas[2].pregunta}}</label>
+    </td>
+    <td>
+      <mat-radio-group aria-label="p3" name="p3" (change)="setp3($event.value)">
+        <mat-radio-button value="si">Sí</mat-radio-button>
+        <mat-radio-button value="no">No</mat-radio-button>
+        <mat-radio-button value="nr">No responde</mat-radio-button>
+      </mat-radio-group>
+    </td>
+  </tr>
+  <tr class="row">
+    <td>
+      <label>{{preguntas[3].pregunta}}</label>
+    </td>
+    <td>
+      <mat-radio-group aria-label="p4" name="p4" (change)="setp4($event.value)">
+        <mat-radio-button value="si">Sí</mat-radio-button>
+        <mat-radio-button value="no">No</mat-radio-button>
+        <mat-radio-button value="nr">No responde</mat-radio-button>
+      </mat-radio-group>
+    </td>
+  </tr>
+  <tr class="row">
+    <td>
+      <label>{{preguntas[4].pregunta}}</label>
+    </td>
+    <td>
+      <mat-radio-group aria-label="p5" name="p5" (change)="setp5($event.value)">
+        <mat-radio-button value="si">Sí</mat-radio-button>
+        <mat-radio-button value="no">No</mat-radio-button>
+        <mat-radio-button value="nr">No responde</mat-radio-button>
+      </mat-radio-group>
+    </td>
+  </tr>
+</table>
+
+<button mat-raised-button color="primary" id="btnguardar" (click)="guardar()">Guardar</button>
+<button mat-raised-button color="warn" id="btnespera" (click)="espera()">Dejar en espera</button>

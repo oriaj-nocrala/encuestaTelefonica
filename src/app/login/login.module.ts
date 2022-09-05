@@ -1,3 +1,4 @@
+import { AuthService } from './services/auth.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormularioComponent } from './login-page/formulario/formulario.component';
@@ -6,6 +7,7 @@ import { LoginComponent } from './login.component';
 import { LoginRoutingModule } from './login-routing.module';
 import { RecuperarPageComponent } from './recuperar-page/recuperar-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -14,8 +16,9 @@ import { LoginPageComponent } from './login-page/login-page.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    LoginRoutingModule
+    LoginRoutingModule,
   ],
-  exports:[]
+  exports:[],
+  providers:[]
 })
 export class LoginModule { }

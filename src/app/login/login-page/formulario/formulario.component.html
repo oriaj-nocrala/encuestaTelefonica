@@ -1,14 +1,8 @@
 
 <div class="text-center titulo-login">LOGIN</div>
-<form [formGroup]="loginForm" novalidate (ngSubmit)="submit()">
+<form #userLogin = "ngForm" [formGroup]="loginForm" novalidate (ngSubmit)="submit(userLogin.value)">
   <div class="form-group">
-    <input type="email" class="form-control" formControlName="email" placeholder="Correo">
-    <small class="form-text fadein error" *ngIf="loginForm.controls['email'].touched && loginForm.controls['email'].errors?.['required']">
-      Por favor ingrese un correo electrónico.
-    </small>
-    <small class="form-text fadein error" *ngIf="loginForm.controls['email'].touched && loginForm.controls['email'].errors?.['email']">
-      Dirección de correo electrónico inválida.
-    </small>
+    <input type="input" class="form-control" formControlName="userName" placeholder="Usuario">
   </div>
   <div class="form-group">
     <input type="password" class="form-control" formControlName="password" placeholder="Constraseña">

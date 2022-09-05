@@ -1,15 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import {Component, Inject} from '@angular/core';
+import {DataService} from '../../shared/servicios/data.service';
+
 
 @Component({
-  selector: 'app-eliminar',
-  templateUrl: './eliminar.component.html',
-  styleUrls: ['./eliminar.component.scss']
+  selector: 'app-delete.dialog',
+  templateUrl: '../../usuarios/eliminar/eliminar.component.html',
+  styleUrls: ['../../usuarios/eliminar/eliminar.component.scss']
 })
-export class EliminarDialogComponent implements OnInit {
+export class DeleteDialogComponent {
 
-  constructor() { }
+  constructor(public dialogRef: MatDialogRef<DeleteDialogComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: any, public dataService: DataService) { }
 
-  ngOnInit(): void {
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 
+  confirmDelete(): void {
+    this.dataService.deleteIssue(this.data.rut);
+  }
 }

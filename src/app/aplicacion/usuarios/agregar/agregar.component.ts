@@ -1,16 +1,18 @@
-import { Component, Inject } from '@angular/core';
+import { Usuario } from './../../shared/modelos/usuario';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { DataService } from '../../shared/servicios/data.service';
+import {Component, Inject} from '@angular/core';
+import {DataService} from '../../shared/servicios/data.service';
 import {FormControl, Validators} from '@angular/forms';
-import {Usuario} from '../../shared/modelos/usuario';
+import {Issue} from '../../shared/modelos/usuario';
 
 @Component({
-  selector: 'app-agregar',
-  templateUrl: './agregar.component.html',
-  styleUrls: ['./agregar.component.scss']
+  selector: 'app-add.dialog',
+  templateUrl: '../../usuarios/agregar/agregar.component.html',
+  styleUrls: ['../../usuarios/agregar/agregar.component.scss']
 })
-export class AgregarDialogComponent {
-  constructor(public dialogRef: MatDialogRef<AgregarDialogComponent>,
+
+export class AddDialogComponent {
+  constructor(public dialogRef: MatDialogRef<AddDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: Usuario,
               public dataService: DataService) { }
 
@@ -21,7 +23,7 @@ export class AgregarDialogComponent {
 
   getErrorMessage() {
     return this.formControl.hasError('required') ? 'Required field' :
-      this.formControl.hasError('email') ? 'Not a valid email' :
+      this.formControl.hasError('correo') ? 'Not a valid email' :
         '';
   }
 
@@ -34,7 +36,6 @@ export class AgregarDialogComponent {
   }
 
   public confirmAdd(): void {
-    this.dataService.addItem(this.data);
+    this.dataService.addIssue(this.data);
   }
 }
-

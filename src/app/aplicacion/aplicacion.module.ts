@@ -1,3 +1,6 @@
+import { AuthService } from './../login/services/auth.service';
+import { CommonModule } from '@angular/common';
+import { DataService } from './shared/servicios/data.service';
 import { NgModule } from '@angular/core';
 import { AplicacionComponent } from './aplicacion.component';
 import { SharedModule } from './shared/shared.module';
@@ -11,9 +14,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { EstadisticasComponent } from './estadisticas/estadisticas.component';
 import { EmpresasComponent } from './empresas/empresas.component';
-import { AgregarDialogComponent } from './usuarios/agregar/agregar.component';
-import { EditarDialogComponent } from './usuarios/editar/editar.component';
-import { EliminarDialogComponent } from './usuarios/eliminar/eliminar.component';
+import { AddDialogComponent } from './usuarios/agregar/agregar.component';
+import { EditDialogComponent } from './usuarios/editar/editar.component';
+import { DeleteDialogComponent } from './usuarios/eliminar/eliminar.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -26,13 +30,19 @@ import { EliminarDialogComponent } from './usuarios/eliminar/eliminar.component'
     UsuariosComponent,
     EstadisticasComponent,
     EmpresasComponent,
+    AddDialogComponent,
+    EditDialogComponent,
+    DeleteDialogComponent
   ],
   imports: [
     AplicacionRoutingModule,
     SharedModule,
     AplicacionMaterialModule,
     NgCircleProgressModule.forRoot(),
-    FlexLayoutModule
-  ]
+    FlexLayoutModule,
+    HttpClientModule,
+    CommonModule
+  ],
+  providers:[DataService]
 })
 export class AplicacionModule { }

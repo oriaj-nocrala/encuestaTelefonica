@@ -1,25 +1,45 @@
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 estirar">
+<table mat-table [dataSource]="asignaciones" class="mat-elevation-z8 estirar">
     <ng-container matColumnDef="analista">
       <th mat-header-cell *matHeaderCellDef>Analista</th>
-      <td mat-cell *matCellDef="let element">{{element.analista}}</td>
+      <td mat-cell *matCellDef="let element">{{element.anal.nombre + ' ' + element.anal.apellido}}</td>
     </ng-container>
     <ng-container matColumnDef="empresa">
       <th mat-header-cell *matHeaderCellDef>Empresa</th>
-      <td mat-cell *matCellDef="let element">{{element.empresa}}</td>
+      <td mat-cell *matCellDef="let element; let i = index">
+        <mat-form-field appearance="fill">
+          <mat-label>Elija una empresa</mat-label>
+          <mat-select (valueChange)="pasarASelect($event, i)" value="{{element.empr._id}}">
+            <mat-option *ngFor="let empresa of empresas" [value]="empresa._id">
+              {{empresa.nombre}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </td>
     </ng-container>
-    <ng-container matColumnDef="comuna">
-      <th mat-header-cell *matHeaderCellDef>Comuna</th>
-      <td mat-cell *matCellDef="let element">{{element.comuna}}</td>
+    <ng-container matColumnDef="bodega">
+      <th mat-header-cell *matHeaderCellDef>Bodega</th>
+      <td mat-cell *matCellDef="let element, let i = index">
+        <mat-form-field appearance="fill">
+          <mat-label>Elija una bodega</mat-label>
+          <mat-select (selectionChange)="asignar($event.value, i)" value="{{element.bode._id}}">
+            <mat-option *ngFor="let b of bodegasSelects[i]" [value]="b._id">
+              {{b.nombre}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </td>
     </ng-container>
     <ng-container matColumnDef="hechos">
       <th mat-header-cell *matHeaderCellDef>Hechos</th>
       <td mat-cell *matCellDef="let element">{{element.hechos}}</td>
     </ng-container>
-    <ng-container matColumnDef="total">
+    <!-- <ng-container matColumnDef="total">
       <th mat-header-cell *matHeaderCellDef>Total</th>
       <td mat-cell *matCellDef="let element">{{element.total}}</td>
-    </ng-container>
-
+    </ng-container> -->
+    <!-- <ng-container matColumnDef="boton">
+      <mat-cell *matCellDef><button mat-button value="HOLAA"></button></mat-cell>
+    </ng-container> -->
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>

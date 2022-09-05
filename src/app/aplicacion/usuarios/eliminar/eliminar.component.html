@@ -1,1 +1,18 @@
-<p>eliminar works!</p>
+<div class="container">
+  <h3 mat-dialog-title>¿Está segura?</h3>
+  <div mat-dialog-content>
+    Rut: {{data.rut}}
+    <p></p>
+    Nombre: {{data.nombre}}
+    <p></p>
+    Apellido: {{data.apellido}}
+    <p></p>
+    Correo: {{data.correo}}
+    <p></p>
+  </div>
+
+  <div mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="1" (click)="confirmDelete()">Delete</button>
+    <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+  </div>
+</div>

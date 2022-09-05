@@ -1,11 +1,11 @@
 <mat-sidenav-container id="wrapper">
-  <mat-sidenav #sidenav mode="side" opened id="sidebar">
+  <mat-sidenav #sidenav mode="side" opened id="sidebar" class="menu">
 
     <div class="sidebar-header">
       <span id=logodelibest>DeliBest</span>
     </div>
     <div id="usuario">
-      <h1>Isidora Flores</h1>
+      <h1>{{auth.nombre + " " + auth.apellido}}</h1>
       <h3>Administradora</h3>
     </div>
     <mat-nav-list class="sidebar-nav">
@@ -21,17 +21,22 @@
         <mat-icon mat-list-icon>person</mat-icon>
         Usuarios
       </mat-list-item>
-      <mat-list-item class="sidebar-brand" routerLink="empresas" routerLinkActive="active">
+      <!-- <mat-list-item class="sidebar-brand" routerLink="empresas" routerLinkActive="active">
         <mat-icon mat-list-icon>meeting_room</mat-icon>
         Empresas
       </mat-list-item>
       <mat-list-item class="sidebar-brand" routerLink="estadisticas" routerLinkActive="active">
         <mat-icon mat-list-icon>pie_chart</mat-icon>
         Estadísticas
-      </mat-list-item>
+      </mat-list-item> -->
       <mat-list-item class="sidebar-brand" routerLink="llamadas" routerLinkActive="active">
         <mat-icon mat-list-icon>call</mat-icon>
         Llamadas
+      </mat-list-item>
+      <div class="spacer"></div>
+      <mat-list-item class="sidebar-brand" (click)="logout()">
+        <mat-icon mat-list-icon>logout</mat-icon>
+        Cerrar sesión
       </mat-list-item>
     </mat-nav-list>
   </mat-sidenav>

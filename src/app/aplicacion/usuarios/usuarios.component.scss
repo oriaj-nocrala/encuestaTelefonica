@@ -19,7 +19,13 @@
   font-size: 20px;
   justify-content: space-between;
   border-bottom: 1px solid transparent;
+  background-color: #d7e1e2;
 }
+
+mat-row:hover{
+  background-color:#d7e1e2;
+}
+
 
 .mat-form-field {
   font-size: 14px;
@@ -38,17 +44,27 @@
 
 .mat-cell:nth-child(1),
 .mat-header-cell:nth-child(1){
-  flex: 0 0 6%;
+  flex: 0 0 10%;
 }
 
 .mat-cell:nth-child(2),
 .mat-header-cell:nth-child(2){
-  flex: 0 0 30%;
+  flex: 0 0 10%;
 }
 
 .mat-cell:nth-child(3),
 .mat-header-cell:nth-child(3){
-  flex: 0 0 6%;
+  flex: 0 0 10%;
+}
+
+.mat-cell:nth-child(4),
+.mat-header-cell:nth-child(4){
+  flex: 0 0 25%;
+}
+
+.mat-cell:nth-child(5),
+.mat-header-cell:nth-child(5){
+  flex: 0 0 15%;
 }
 
 .mat-cell:nth-child(7),

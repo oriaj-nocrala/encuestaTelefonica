@@ -9,7 +9,10 @@ import {MatTableModule} from '@angular/material/table';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatDialogModule} from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatSelectModule} from '@angular/material/select';
+import {MatRadioModule} from '@angular/material/radio';
 
 const MATERIAL_MODULES = [
   MatSidenavModule,
@@ -23,7 +26,10 @@ const MATERIAL_MODULES = [
   MatPaginatorModule,
   MatDialogModule,
   FormsModule,
-  ReactiveFormsModule
+  ReactiveFormsModule,
+  MatInputModule,
+  MatSelectModule,
+  MatRadioModule
 ]
 
 @NgModule({
