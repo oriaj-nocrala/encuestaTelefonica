@@ -66,6 +66,7 @@ export class DataService {
     }
   }
 
+  //get
   getDatosPreguntas():Observable<any[]>{
     return this.httpClient.get<any[]>(`${this.API_URL}/getDatosPreguntas`);
   }
@@ -86,12 +87,8 @@ export class DataService {
     return this.httpClient.get<any[]>(`${this.API_URL}/getDatosAsignaciones`);
   }
 
-  getDatosAsignaciones2(): Observable<any[]>{
-    return this.httpClient.get<any[]>(`${this.API_URL}/getDatosAsignaciones2`);
-  }
-
-  getDatosPadron():Observable<any[]>{
-    return this.httpClient.get<any[]>(`${this.API_URL}/getDatosPadron`);
+  getDatosPadron(analista: any):Observable<any[]>{
+    return this.httpClient.get<any[]>(`${this.API_URL}/getDatosPadronPorAnalista?analista=${analista}`);
   }
 
   getPosiblesRespuestas():Observable<any[]>{
@@ -108,6 +105,17 @@ export class DataService {
 
   deleteIssue(rut: number): void {
     this.httpClient.delete(`${this.API_URL}/eliminarUsuarioPorRut?rut=${rut}`).subscribe({
+      next: (data) => {
+      console.log(data);
+      console.log("Bakán.");
+      },
+      error: (err: HttpErrorResponse) => {
+        console.log("De perro.");      }
+      });
+  }
+
+  putAsignacion(analista:string, bodega:string){
+    this.httpClient.put(`${this.API_URL}/putAsignacion?analista=${analista}&bodega=${bodega}`, null).subscribe({
       next: (data) => {
       console.log(data);
       console.log("Bakán.");

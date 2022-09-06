@@ -1,9 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { DataService } from './../shared/servicios/data.service';
 import { Component, OnInit } from '@angular/core';
 import { Empresa } from '../shared/modelos/empresa';
 import { Usuario } from '../shared/modelos/usuario';
+import { AuthService } from 'src/app/login/services/auth.service';
 
 export interface Asignacion {
   analista: string,
@@ -25,7 +25,8 @@ const ELEMENT_DATA: Asignacion[] = [
 
 export class AsignarComponent implements OnInit {
 
-  constructor(public dataService: DataService) { }
+  constructor(public dataService: DataService,
+    private authService: AuthService,) { }
 
   empresas:Empresa[] = [];
   bodegas: any[] = [];
@@ -40,7 +41,7 @@ export class AsignarComponent implements OnInit {
     this.dataService.getAllIssues();
     this.obtenerEmpresas();
     this.obtenerBodegas();
-    this.obtenerAsignaciones2();
+    this.obtenerAsignaciones();
     this.obtenerAnalistas();
   }
 
@@ -90,26 +91,21 @@ export class AsignarComponent implements OnInit {
     });
   }
 
-  obtenerAsignaciones2(){
-    this.dataService.getDatosAsignaciones2().subscribe({
-      next:(asignacion) =>{
-        this.asignaciones = asignacion;
-      },
-      error:(e: HttpErrorResponse) =>{
-        console.log(e);
-      }
-    });
-  }
-
   pasarASelect(valor:any, i:any){
     console.log("index: "+valor);
     this.bodegasSelects[i]=this.bodegas.filter((b)=>{if(b.manipuladora == valor) return b; })
     console.log(this.bodegasSelects);
   }
 
-  asignar(comuna:any, index:any){
-
-    console.log(comuna, index);
+  asignar(bodega:any, analista:any){
+    //Guardar la asignación en la base de datos
+    //Pasarle la bodega
+    //Recargar la celda de asignacion
+    this.dataService.putAsignacion(analista, bodega);
+    setTimeout(()=>{
+      this.asignaciones = [];
+      this.obtenerAsignaciones();
+    },1000);
   }
   // displayedColumns: string[] = ['analista','comuna','hechos','total'];
     displayedColumns: string[] = ['analista','empresa','bodega','hechos'];

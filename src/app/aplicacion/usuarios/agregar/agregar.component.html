@@ -5,7 +5,7 @@
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput #input class="form-control" placeholder="Rut" [(ngModel)]="data.rut" name="rut" required >
+        <input matInput #input class="form-control" placeholder="Rut sin guión" [(ngModel)]="data.rut" name="rut" required >
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
@@ -21,14 +21,14 @@
     <!--Contains mat-hint for characters count and has maxLengt set-->
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput #inputstate class="form-control" placeholder="Apellido" [(ngModel)]="data.apellido" name="apellido" maxlength="10" required >
+        <input matInput #inputstate class="form-control" placeholder="Apellido" [(ngModel)]="data.apellido" name="apellido" required >
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput placeholder="Correo" [(ngModel)]="data.correo" name="correo" email>
+        <input matInput placeholder="Correo" [(ngModel)]="data.correo" name="correo" email required>
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
@@ -43,7 +43,7 @@
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput #inputpass type="password" placeholder="Contraseña" [(ngModel)]="data.pass" name="pass">
+        <input matInput #inputpass type="password" placeholder="Contraseña" [(ngModel)]="data.pass" name="pass" required>
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
         <mat-hint align="end">{{inputpass.value.length || 0}}/20</mat-hint>
       </mat-form-field>
@@ -51,7 +51,8 @@
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput placeholder="Teléfono" [(ngModel)]="data.telefono" name="telefono">
+        <input matInput placeholder="Teléfono" [(ngModel)]="data.telefono" name="telefono" required>
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
 

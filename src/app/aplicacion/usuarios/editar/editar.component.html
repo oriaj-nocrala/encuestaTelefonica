@@ -5,7 +5,7 @@
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput #input class="form-control" placeholder="Rut" [(ngModel)]="data.rut" name="rut" required >
+        <input matInput #input class="form-control" placeholder="Rut sin guión" [(ngModel)]="data.rut" name="rut" required >
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
@@ -29,25 +29,32 @@
 
     <div class="form">
         <mat-form-field color="accent">
-          <input matInput placeholder="Correo" [(ngModel)]="data.correo" name="correo">
+          <input matInput placeholder="Correo" [(ngModel)]="data.correo" name="correo" required>
+          <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
     </div>
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput placeholder="User" [(ngModel)]="data.user" name="user">
+        <input matInput placeholder="User" [(ngModel)]="data.user" name="user" required>
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+
       </mat-form-field>
     </div>
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput placeholder="Contraseña" [(ngModel)]="data.pass" name="pass">
+        <input matInput placeholder="Contraseña" [(ngModel)]="data.pass" name="pass" required>
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+
       </mat-form-field>
     </div>
 
     <div class="form">
       <mat-form-field color="accent">
         <input matInput placeholder="Teléfono" [(ngModel)]="data.telefono" name="telefono">
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+
       </mat-form-field>
     </div>
 

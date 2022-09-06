@@ -23,9 +23,12 @@ export class FormularioComponent {
   submit(userlogin:any){
     this.authService.login(userlogin.userName).subscribe({
       next:(u)=>{
-        if(u.user == userlogin.userName)
-          if(u.pass == userlogin.password)
+        if(u.user == userlogin.userName && u.pass == userlogin.password){
+          if(u.tipo == '6311110c9582ca5ed94ede0d')
             this.router.navigate(['/aplicacion/reporte']);
+          else
+            this.router.navigate(['/aplicacion/llamadas']);
+        }
 
       },
       error(e:HttpErrorResponse){

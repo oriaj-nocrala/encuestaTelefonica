@@ -2,6 +2,7 @@ import { DataService } from './../shared/servicios/data.service';
 import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AuthService } from 'src/app/login/services/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-llamadas',
@@ -19,19 +20,21 @@ export class LlamadasComponent implements OnInit {
   datosAsignaciones:any[] = [];
   posiblesRespuestas:any[] = [];
   preguntas:any[] = [];
+  checked:boolean = false;
   constructor( public dataService: DataService,
-    private authService:AuthService) { }
+    private authService:AuthService,
+    private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
-    this.obtenerDatosPadron(); //Por bodega si el usuario está asignado
+    this.obtenerDatosPadron(this.authService.auth._id); //Por bodega si el usuario está asignado
     this.obtenerPosiblesRespuestas();
     this.obtenerPreguntas();
     this.obtenerDatosAsignaciones();
 
   }
 
-  obtenerDatosPadron(){ //Obtiene 5 valores aleatorios del padrón
-    this.dataService.getDatosPadron().subscribe({
+  obtenerDatosPadron(analista:any){ //Obtiene 5 valores aleatorios del padrón
+    this.dataService.getDatosPadron(analista).subscribe({
       next:(padron) =>{
         this.datosPadron = padron;
       },
@@ -42,7 +45,7 @@ export class LlamadasComponent implements OnInit {
   }
 
   obtenerDatosAsignaciones(){ //Una asignación por usuario
-    this.dataService.getDatosAsignaciones2().subscribe({
+    this.dataService.getDatosAsignaciones().subscribe({
       next:(asignaciones) =>{
         this.datosAsignaciones = asignaciones;
       },
@@ -76,39 +79,27 @@ export class LlamadasComponent implements OnInit {
   }
 
 
+
+
+
   guardar(){
     this.dataService.addRespuestas(this.authService.auth._id,this.datosPadron[0]._id, this.preguntas, [this.p1,this.p2,this.p3,this.p4,this.p5]);
     this.datosPadron.shift();
+    this._snackBar.open("Se ha guardado correctamente 😁👍✅", undefined, {duration:2000});
+    this.p1=null;
+    this.p2=null;
+    this.p3=null;
+    this.p4=null;
+    this.p5=null;
   }
 
   espera(){
     this.datosPadron.shift();
+    this._snackBar.open("Se ha puesto en espera 🤯👎", undefined, {duration:2000});
   }
 
-  setp1(event:any){
-    this.posiblesRespuestas.forEach(pr=>{
-      if(pr.respuesta == event) this.p1 = pr._id;
-    })
-  }
-  setp2(event:any){
-    this.posiblesRespuestas.forEach(pr=>{
-      if(pr.respuesta == event) this.p2 = pr._id;
-    })
-  }
-  setp3(event:any){
-    this.posiblesRespuestas.forEach(pr=>{
-      if(pr.respuesta == event) this.p3 = pr._id;
-    })
-  }
-  setp4(event:any){
-    this.posiblesRespuestas.forEach(pr=>{
-      if(pr.respuesta == event) this.p4 = pr._id;
-    })
-  }
-  setp5(event:any){
-    this.posiblesRespuestas.forEach(pr=>{
-      if(pr.respuesta == event) this.p5 = pr._id;
-    })
+  algo(event:any){
+    console.log(event)
   }
 
 }

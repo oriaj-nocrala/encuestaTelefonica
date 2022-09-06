@@ -1,5 +1,5 @@
 
-<div class="text-center titulo-login">LOGIN</div>
+<div class="text-center titulo-login">LOGIN
 <form #userLogin = "ngForm" [formGroup]="loginForm" novalidate (ngSubmit)="submit(userLogin.value)">
   <div class="form-group">
     <input type="input" class="form-control" formControlName="userName" placeholder="Usuario">
@@ -10,5 +10,6 @@
   <div class="text-center div-btnsubmit">
     <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Ingresar</button>
   </div>
-  <div class="text-center div-recuperar">Recuperar contraseña</div>
+  <!-- <div class="text-center div-recuperar">Recuperar contraseña</div> -->
 </form>
+</div>

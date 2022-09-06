@@ -23,7 +23,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 #fondo{
-  width:5076px;
+  width:100%;
   position: absolute;
   left: 0;
   right: 0;
@@ -33,29 +33,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   background: url('./assets/images/trama_back_app.svg')  0% 0% repeat;
   background-size:120px;
   margin: 0 auto;
+  perspective: 1000px;
+  perspective-origin: 50% 50%;
+  display: flex;
 
-
-  animation-name: MOVE-BG;
-  // animation: slide 60s linear infinite;
-  animation-duration: 60s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
+  animation: scroll 70s linear infinite
 }
-@keyframes MOVE-BG {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-1692px);
+@keyframes scroll {
+  100% {
+    background-position:0px -3000px;
   }
 }
-
-// @keyframes MOVE_BG {
-//   0% {transform: translateX(0);}
-//   20% {transform: translateX(0);}
-//   40% {transform: translateX(-50%);}
-//   50% {transform: translateX(0);}
-//   60% {transform: translateX(-25%);}
-//   80% {transform: translateX(0);}
-//   100% {transform: translateX(0);}
-// }
