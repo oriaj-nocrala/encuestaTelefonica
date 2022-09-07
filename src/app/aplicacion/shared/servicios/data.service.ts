@@ -96,7 +96,15 @@ export class DataService {
   }
 
   updateIssue (usuario: Usuario): void {
-    this.dialogData = usuario;
+    this.httpClient.put(`${this.API_URL}/actualizarUsuario?rut=${usuario.rut}&nombre=${usuario.nombre}&apellido=${usuario.apellido}&correo=${usuario.correo}&telefono=${usuario.telefono}&user=${usuario.user}&pass=${usuario.pass}`, null).subscribe(data => {
+      this.dialogData = usuario;
+      console.log("Bakán.");
+    },
+    (err: HttpErrorResponse) => {
+      // this.toasterService.showToaster('Error occurred. Details: ' + err.name + ' ' + err.message, 8000);
+      console.log("De perro.");
+    }
+  );
   }
 
   // deleteIssue (rut: number): void {
