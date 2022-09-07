@@ -25,7 +25,7 @@ export class FormularioComponent {
       next:(u)=>{
         if(u.user == userlogin.userName && u.pass == userlogin.password){
           if(u.tipo == '6311110c9582ca5ed94ede0d')
-            this.router.navigate(['/aplicacion/reporte']);
+            this.router.navigate(['/aplicacion/asignar']);
           else
             this.router.navigate(['/aplicacion/llamadas']);
         }
