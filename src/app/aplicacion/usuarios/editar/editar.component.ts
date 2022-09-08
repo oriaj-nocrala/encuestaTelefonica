@@ -14,8 +14,8 @@ export class EditDialogComponent {
               @Inject(MAT_DIALOG_DATA) public data: any, public dataService: DataService) { }
 
   formControl = new FormControl('', [
-    Validators.required
-    // Validators.email,
+    Validators.required,
+    Validators.email,
   ]);
 
   getErrorMessage() {

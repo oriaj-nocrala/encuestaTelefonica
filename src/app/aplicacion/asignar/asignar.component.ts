@@ -25,6 +25,8 @@ const ELEMENT_DATA: Asignacion[] = [
 
 export class AsignarComponent implements OnInit {
 
+  algo:string = '';
+
   constructor(public dataService: DataService,
     private authService: AuthService,) { }
 

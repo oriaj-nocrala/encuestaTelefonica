@@ -1,7 +1,6 @@
 <div class="container">
-  <h3 mat-dialog-title>Rut: {{data.rut}}</h3>
+  <h3 mat-dialog-title>Id: {{data._id}}</h3>
 
-  <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
 
     <div class="form">
       <mat-form-field color="accent">
@@ -62,5 +61,5 @@
       <button mat-button type="submit" [disabled]="!formControl.valid" [mat-dialog-close]="1" (click)="stopEdit()">Guardar</button>
       <button mat-button (click)="onNoClick()" tabindex="-1">Cancelar</button>
     </div>
-  </form>
+
 </div>

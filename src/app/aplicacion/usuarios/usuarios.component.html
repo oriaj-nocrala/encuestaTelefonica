@@ -16,6 +16,12 @@
           The actual rendered columns are set as a property on the row definition" -->
 
     <!-- ID Column -->
+
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header >ID en BD</mat-header-cell>
+      <mat-cell *matCellDef="let row" >{{row._id}}</mat-cell>
+    </ng-container>
+
     <ng-container matColumnDef="rut">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Rut</mat-header-cell>
       <mat-cell *matCellDef="let row" >{{row.rut}}</mat-cell>
@@ -60,7 +66,7 @@
       </mat-header-cell>
 
       <mat-cell *matCellDef="let row; let i=index;">
-        <button mat-icon-button color="accent" (click)="startEdit(i, row.rut, row.nombre, row.apellido, row.correo, row.user, row.pass, row.telefono)">
+        <button mat-icon-button color="accent" (click)="startEdit(i, row._id, row.rut, row.nombre, row.apellido, row.correo, row.user, row.pass, row.telefono)">
           <mat-icon aria-label="Edit">edit</mat-icon>
         </button>
 

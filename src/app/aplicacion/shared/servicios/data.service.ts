@@ -6,7 +6,10 @@ import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 
 @Injectable()
 export class DataService {
-  private readonly API_URL = 'http://localhost:3000';
+  //desarrollo
+  // private readonly API_URL = 'http://localhost:3000';
+  //producción
+  private readonly API_URL = 'https://delibest.encuestadigital.cl/api';
 
   dataChange: BehaviorSubject<Usuario[]> = new BehaviorSubject<Usuario[]>([]);
   // empresas: BehaviorSubject<Empresa[]> = new BehaviorSubject<Empresa[]>([]);
@@ -96,15 +99,14 @@ export class DataService {
   }
 
   updateIssue (usuario: Usuario): void {
-    this.httpClient.put(`${this.API_URL}/actualizarUsuario?rut=${usuario.rut}&nombre=${usuario.nombre}&apellido=${usuario.apellido}&correo=${usuario.correo}&telefono=${usuario.telefono}&user=${usuario.user}&pass=${usuario.pass}`, null).subscribe(data => {
+    this.httpClient.put(`${this.API_URL}/actualizarUsuario?_id=${usuario._id}&rut=${usuario.rut}&nombre=${usuario.nombre}&apellido=${usuario.apellido}&correo=${usuario.correo}&telefono=${usuario.telefono}&user=${usuario.user}&pass=${usuario.pass}`, null).subscribe(data => {
       this.dialogData = usuario;
       console.log("Bakán.");
     },
     (err: HttpErrorResponse) => {
       // this.toasterService.showToaster('Error occurred. Details: ' + err.name + ' ' + err.message, 8000);
       console.log("De perro.");
-    }
-  );
+    });
   }
 
   // deleteIssue (rut: number): void {

@@ -58,13 +58,13 @@ export class UsuariosComponent implements OnInit {
     });
   }
 
-  startEdit(i: number, rut: number, nombre: string, apellido: string, correo: string, user: string, pass: string, telefono: number) {
+  startEdit(i: number, _id:string, rut: number, nombre: string, apellido: string, correo: string, user: string, pass: string, telefono: number) {
     this.rut = rut;
     // index row is used just for debugging proposes and can be removed
     this.index = i;
     console.log(this.index);
     const dialogRef = this.dialog.open(EditDialogComponent, {
-      data: {rut: rut, nombre: nombre, apellido: apellido, correo: correo, user: user, pass:pass, telefono: telefono}
+      data: {_id:_id, rut: rut, nombre: nombre, apellido: apellido, correo: correo, user: user, pass:pass, telefono: telefono}
     });
 
     dialogRef.afterClosed().subscribe(result => {

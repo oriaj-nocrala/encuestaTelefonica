@@ -8,7 +8,11 @@ import { Usuario } from 'src/app/aplicacion/shared/modelos/usuario';
 })
 export class AuthService {
 
-  private baseUrl: string = 'http://localhost:3000';
+  //desarrollo
+  // private baseUrl: string = 'http://localhost:3000';
+  //produccion
+  private baseUrl: string = 'https://delibest.encuestadigital.cl/api';
+
   private _auth: Usuario | undefined;
 
   get auth():Usuario{
