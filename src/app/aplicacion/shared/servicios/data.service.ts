@@ -7,9 +7,9 @@ import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 @Injectable()
 export class DataService {
   //desarrollo
-  // private readonly API_URL = 'http://localhost:3000';
+  private readonly API_URL = 'http://localhost:3850/api';
   //producción
-  private readonly API_URL = 'https://delibest.encuestadigital.cl/api';
+  // private readonly API_URL = 'https://delibest.encuestadigital.cl/api';
 
   dataChange: BehaviorSubject<Usuario[]> = new BehaviorSubject<Usuario[]>([]);
   // empresas: BehaviorSubject<Empresa[]> = new BehaviorSubject<Empresa[]>([]);
@@ -28,12 +28,14 @@ export class DataService {
 
   /** CRUD METHODS */
   getAllIssues(): void {
-    this.httpClient.get<Usuario[]>(`${this.API_URL}/getDatosUsuarios`).subscribe(data => {
+    this.httpClient.get<Usuario[]>(`${this.API_URL}/getDatosUsuarios`).subscribe({
+      next:data => {
         this.dataChange.next(data);
       },
-      (error: HttpErrorResponse) => {
+      error:(error: HttpErrorResponse) => {
       console.log (error.name + ' ' + error.message);
-      });
+      }
+    });
   }
 
   getDatosUsuarios(): Observable<Usuario[]> {
@@ -48,7 +50,7 @@ export class DataService {
 
   // UPDATE, PUT METHOD
   addIssue(usuario: Usuario): void {
-    this.httpClient.put(`${this.API_URL}/putUsuario?rut=${usuario.rut}&nombre=${usuario.nombre}&apellido=${usuario.apellido}&correo=${usuario.correo}&telefono=${usuario.telefono}&user=${usuario.user}&pass=${usuario.pass}`, usuario).subscribe(data => {
+    this.httpClient.post(`${this.API_URL}/agregarUsuario?rut=${usuario.rut}&nombre=${usuario.nombre}&apellido=${usuario.apellido}&correo=${usuario.correo}&telefono=${usuario.telefono}&user=${usuario.user}&pass=${usuario.pass}`, usuario).subscribe(data => {
         this.dialogData = usuario;
         // this.toasterService.showToaster('Successfully edited', 3000);
         console.log("Bakán.");
@@ -61,7 +63,7 @@ export class DataService {
   }
 
   addRespuestas(usuario_id: string, padron_id:string,preguntas:any[], respuestas:any[]){
-    this.httpClient.put(`${this.API_URL}/putRespuesta?analista=${usuario_id}&padron=${padron_id}&pregunta1=${preguntas[0]._id}&pregunta2=${preguntas[1]._id}&pregunta3=${preguntas[2]._id}&pregunta4=${preguntas[3]._id}&pregunta5=${preguntas[4]._id}&respuesta1=${respuestas[0]}&respuesta2=${respuestas[1]}&respuesta3=${respuestas[2]}&respuesta4=${respuestas[3]}&respuesta5=${respuestas[4]}`,'a').subscribe(data => {
+    this.httpClient.post(`${this.API_URL}/agregarRespuesta?analista=${usuario_id}&padron=${padron_id}&pregunta1=${preguntas[0]._id}&pregunta2=${preguntas[1]._id}&pregunta3=${preguntas[2]._id}&pregunta4=${preguntas[3]._id}&pregunta5=${preguntas[4]._id}&respuesta1=${respuestas[0]}&respuesta2=${respuestas[1]}&respuesta3=${respuestas[2]}&respuesta4=${respuestas[3]}&respuesta5=${respuestas[4]}`,'a').subscribe(data => {
       console.log("Bakán");
     }),
     (err: HttpErrorResponse) =>{

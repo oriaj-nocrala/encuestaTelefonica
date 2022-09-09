@@ -9,9 +9,9 @@ import { Usuario } from 'src/app/aplicacion/shared/modelos/usuario';
 export class AuthService {
 
   //desarrollo
-  // private baseUrl: string = 'http://localhost:3000';
+  private baseUrl: string = 'http://localhost:3850/api';
   //produccion
-  private baseUrl: string = 'https://delibest.encuestadigital.cl/api';
+  // private baseUrl: string = 'https://delibest.encuestadigital.cl/api';
 
   private _auth: Usuario | undefined;
 

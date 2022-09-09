@@ -61,7 +61,7 @@ mat-toolbar{
 .menu:hover .sidebar-header{
   // transform: scale(1.2);
   // transform:rotateZ(180deg)
-  transform:rotate3d(1, -1, 0, 30deg);
+  // transform:rotate3d(1, -1, 0, 30deg); :(
   color:#c21930;
   text-shadow:2px 2px white;
 }
