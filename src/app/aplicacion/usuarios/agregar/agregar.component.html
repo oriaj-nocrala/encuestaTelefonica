@@ -5,7 +5,7 @@
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput #input class="form-control" placeholder="Rut sin guión" [(ngModel)]="data.rut" name="rut" required >
+        <input matInput #input class="form-control" placeholder="Rut sin dígito verificador! (12345678)" [(ngModel)]="data.rut" name="rut" required (keypress)="numberOnly($event)" >
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
@@ -51,7 +51,7 @@
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput placeholder="Teléfono" [(ngModel)]="data.telefono" name="telefono" required>
+        <input matInput placeholder="Teléfono" [(ngModel)]="data.telefono" name="telefono" required  (keypress)="numberOnly($event)">
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>

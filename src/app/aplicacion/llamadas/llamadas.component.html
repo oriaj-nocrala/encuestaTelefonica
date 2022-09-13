@@ -41,6 +41,8 @@
         <mat-radio-button value="631591ba9240c113e4e450dc">Sí</mat-radio-button>
         <mat-radio-button value="631591ba9240c113e4e450dd">No</mat-radio-button>
         <mat-radio-button value="631591ba9240c113e4e450de">No responde</mat-radio-button>
+
+
       </mat-radio-group>
     </td>
   </tr>
@@ -50,9 +52,11 @@
     </td>
     <td>
       <mat-radio-group aria-label="p2" name="p2" [(ngModel)]="p2">
-        <mat-radio-button value="631591ba9240c113e4e450dc">Sí</mat-radio-button>
-        <mat-radio-button value="631591ba9240c113e4e450dd">No</mat-radio-button>
-        <mat-radio-button value="631591ba9240c113e4e450de">No responde</mat-radio-button>
+        <mat-radio-button value="631591ba9240c113e4e450dc">A través de su jefatura.</mat-radio-button>
+        <mat-radio-button value="631591ba9240c113e4e450dd">A través de sus compañeras.</mat-radio-button>
+        <mat-radio-button value="631591ba9240c113e4e450de">Por el Facebook de la empresa.</mat-radio-button>
+        <mat-radio-button #radotro value="631f395f460aca5e99cb1b9b">Otro ¿cuál?</mat-radio-button>
+        <input *ngIf="radotro.checked" matInput placeholder="Método" [(ngModel)]="otro" [required]="radotro.checked">
       </mat-radio-group>
     </td>
   </tr>
@@ -62,9 +66,10 @@
     </td>
     <td>
       <mat-radio-group aria-label="p3" name="p3" [(ngModel)]="p3">
-        <mat-radio-button value="631591ba9240c113e4e450dc">Sí</mat-radio-button>
+        <mat-radio-button #radcorreo value="631591ba9240c113e4e450dc">Sí</mat-radio-button>
+        <input *ngIf="radcorreo.checked" matInput placeholder="Confirme correo electrónico" [(ngModel)]="correo" email [required]="radcorreo.checked" autocomplete="off">
         <mat-radio-button value="631591ba9240c113e4e450dd">No</mat-radio-button>
-        <mat-radio-button value="631591ba9240c113e4e450de">No responde</mat-radio-button>
+        <mat-radio-button value="631591ba9240c113e4e450de">No tengo correo electrónico.</mat-radio-button>
       </mat-radio-group>
     </td>
   </tr>
@@ -76,24 +81,13 @@
       <mat-radio-group aria-label="p4" name="p4" [(ngModel)]="p4">
         <mat-radio-button value="631591ba9240c113e4e450dc">Sí</mat-radio-button>
         <mat-radio-button value="631591ba9240c113e4e450dd">No</mat-radio-button>
-        <mat-radio-button value="631591ba9240c113e4e450de">No responde</mat-radio-button>
-      </mat-radio-group>
-    </td>
-  </tr>
-  <tr class="row">
-    <td>
-      <label>{{preguntas[4].pregunta}}</label>
-    </td>
-    <td>
-      <mat-radio-group aria-label="p5" name="p5" [(ngModel)]="p5">
-        <mat-radio-button value="631591ba9240c113e4e450dc">Sí</mat-radio-button>
-        <mat-radio-button value="631591ba9240c113e4e450dd">No</mat-radio-button>
-        <mat-radio-button value="631591ba9240c113e4e450de">No responde</mat-radio-button>
+        <mat-radio-button value="631591ba9240c113e4e450de">No tengo whatsapp.</mat-radio-button>
       </mat-radio-group>
     </td>
   </tr>
 </table>
 
-
-<button mat-raised-button color="primary" id="btnguardar" (click)="guardar()">Guardar</button>
-<button mat-raised-button color="warn" id="btnespera" (click)="espera()">Dejar en espera</button>
+<div class="bg_buttons">
+  <button mat-raised-button color="primary" id="btnguardar" (click)="guardar()">Guardar</button>
+  <button mat-raised-button color="warn" id="btnespera" (click)="espera()">Dejar en espera</button>
+</div>

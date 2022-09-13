@@ -1,3 +1,4 @@
+import { ReporteModule } from './reporte/reporte.module';
 import { AuthService } from './../login/services/auth.service';
 import { CommonModule } from '@angular/common';
 import { DataService } from './shared/servicios/data.service';
@@ -25,7 +26,7 @@ import { EmpresaPipe } from './pipes/empresa.pipe';
 @NgModule({
   declarations: [
     AplicacionComponent,
-    ReporteComponent,
+    // ReporteComponent,
     AsignarComponent,
     LlamadasComponent,
     UsuariosComponent,
@@ -35,7 +36,7 @@ import { EmpresaPipe } from './pipes/empresa.pipe';
     EditDialogComponent,
     DeleteDialogComponent,
     EmpresaPipe,
-    
+
   ],
   imports: [
     AplicacionRoutingModule,
@@ -44,7 +45,8 @@ import { EmpresaPipe } from './pipes/empresa.pipe';
     NgCircleProgressModule.forRoot(),
     FlexLayoutModule,
     HttpClientModule,
-    CommonModule
+    CommonModule,
+    ReporteModule
   ],
   providers:[DataService]
 })

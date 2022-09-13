@@ -71,3 +71,12 @@ mat-row:hover{
 .mat-header-cell:nth-child(7){
   flex: 0 0 7%;
 }
+
+.hoverpass{
+  visibility: hidden;
+}
+
+
+.hoverpass:hover{
+  visibility: visible;
+}

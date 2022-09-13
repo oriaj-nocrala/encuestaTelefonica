@@ -62,8 +62,8 @@ export class DataService {
     );
   }
 
-  addRespuestas(usuario_id: string, padron_id:string,preguntas:any[], respuestas:any[]){
-    this.httpClient.post(`${this.API_URL}/agregarRespuesta?analista=${usuario_id}&padron=${padron_id}&pregunta1=${preguntas[0]._id}&pregunta2=${preguntas[1]._id}&pregunta3=${preguntas[2]._id}&pregunta4=${preguntas[3]._id}&pregunta5=${preguntas[4]._id}&respuesta1=${respuestas[0]}&respuesta2=${respuestas[1]}&respuesta3=${respuestas[2]}&respuesta4=${respuestas[3]}&respuesta5=${respuestas[4]}`,'a').subscribe(data => {
+  addRespuestas(usuario_id: string, padron_id:string,preguntas:any[], respuestas:any[], otro:string='', correo:string=''){
+    this.httpClient.post(`${this.API_URL}/agregarRespuesta?analista=${usuario_id}&padron=${padron_id}&pregunta1=${preguntas[0]._id}&pregunta2=${preguntas[1]._id}&pregunta3=${preguntas[2]._id}&pregunta4=${preguntas[3]._id}&respuesta1=${respuestas[0]}&respuesta2=${respuestas[1]}&respuesta3=${respuestas[2]}&respuesta4=${respuestas[3]}&otro=${otro}&correo=${correo}`,'a').subscribe(data => {
       console.log("Bakán");
     }),
     (err: HttpErrorResponse) =>{
@@ -94,6 +94,10 @@ export class DataService {
 
   getDatosPadron(analista: any):Observable<any[]>{
     return this.httpClient.get<any[]>(`${this.API_URL}/getDatosPadronPorAnalista?analista=${analista}`);
+  }
+
+  getDatosRespuestas():Observable<any[]>{
+    return this.httpClient.get<any[]>(`${this.API_URL}/getDatosRespuestas`);
   }
 
   getPosiblesRespuestas():Observable<any[]>{
