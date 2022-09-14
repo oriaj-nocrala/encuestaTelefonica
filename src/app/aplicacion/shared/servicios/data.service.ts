@@ -3,6 +3,7 @@ import {BehaviorSubject, Observable} from 'rxjs';
 import {Usuario} from '../modelos/usuario';
 import { Empresa } from '../modelos/empresa';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import { Analista, RespuestaXAnalista } from '../interfaces/encuesta.interface';
 
 @Injectable()
 export class DataService {
@@ -84,8 +85,13 @@ export class DataService {
     return this.httpClient.get<String[]>(`${this.API_URL}/getDatosBodegas`);
   }
 
-  getDatosAnalistas(): Observable<Usuario[]>{
-    return this.httpClient.get<Usuario[]>(`${this.API_URL}/getDatosAnalistas`);
+  getDatosAnalistas(): Observable<Analista[]>{
+    return this.httpClient.get<Analista[]>(`${this.API_URL}/getDatosAnalistas`);
+  }
+
+  getCountRespuestasPorAnalista(): Observable<RespuestaXAnalista[]>{
+    return this.httpClient.get<RespuestaXAnalista[]>(`${this.API_URL}/getCountRepuestasPorAnalista`);
+
   }
 
   getDatosAsignaciones(): Observable<any[]>{
