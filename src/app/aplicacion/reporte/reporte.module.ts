@@ -2,6 +2,8 @@ import { ReporteComponent } from './reporte.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgChartsModule } from 'ng2-charts';
+import { AplicacionMaterialModule } from '../material/aplicacion-material.module';
+import { NgCircleProgressModule } from 'ng-circle-progress';
 
 
 
@@ -9,7 +11,9 @@ import { NgChartsModule } from 'ng2-charts';
   declarations: [ReporteComponent],
   imports: [
     CommonModule,
-    NgChartsModule
+    NgChartsModule,
+    AplicacionMaterialModule,
+    NgCircleProgressModule
   ]
 })
 export class ReporteModule { }

@@ -6,6 +6,7 @@ import {Analista, Respuesta, RespuestaCruzada, RespuestaXAnalista} from '../shar
 
 import DataLabelsPlugin from 'chartjs-plugin-datalabels';
 import { Observable, switchMap, combineLatest } from 'rxjs';
+import { MatLabel } from '@angular/material/form-field';
 
 @Component({
   selector: 'app-reporte',
@@ -125,8 +126,13 @@ export class ReporteComponent {
   public barChartOptions: ChartConfiguration['options'] = {
     responsive: true,
     scales:{
-      x:{},
-      y:{}
+      xAxes:{},
+      yAxes:{
+        ticks: {
+          display:true,
+          callback: label => (Number(label) % 1 === 0)? label: ''
+        }
+      }
     },
     plugins: {
       legend: {
@@ -139,16 +145,16 @@ export class ReporteComponent {
     }
   };
 
-  public randomize(): void {
+  public actualizar(): void {
     // Only Change 3 values
-    this.barChartData.datasets[0].data = [
-      Math.round(Math.random() * 100),
-      59,
-      80,
-      Math.round(Math.random() * 100),
-      56,
-      Math.round(Math.random() * 100),
-      40 ];
+    // this.barChartData.datasets[0].data = [
+    //   Math.round(Math.random() * 100),
+    //   59,
+    //   80,
+    //   Math.round(Math.random() * 100),
+    //   56,
+    //   Math.round(Math.random() * 100),
+    //   40 ];
 
     this.chart?.update();
   }
