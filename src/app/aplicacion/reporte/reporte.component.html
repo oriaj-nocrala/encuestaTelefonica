@@ -17,45 +17,47 @@
 
     <!-- ID Column -->
 
-    <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>ID en BD</mat-header-cell>
-      <mat-cell *matCellDef="let row">{{row._id}}</mat-cell>
+    <ng-container matColumnDef="fecha">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Fecha</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.hora_creacion | date}}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="rut">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Rut</mat-header-cell>
-      <mat-cell *matCellDef="let row">{{row.rut}}</mat-cell>
+    <ng-container matColumnDef="analista">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Analista</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.analista.nombre + ' ' + row.analista.apellido}}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="nombre">
+    <ng-container matColumnDef="rut_padron">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Rut en el Padrón</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.padron.rut}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="nombre_padron">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.nombre}}</mat-cell>
+      <mat-cell *matCellDef="let row"> {{row.padron.nombre + ' ' + row.padron.apellido_paterno | titlecase}}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="apellido">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Apellido</mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.apellido}}</mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="correo">
+    <ng-container matColumnDef="correo_padron">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Correo</mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.correo}}</mat-cell>
+      <mat-cell *matCellDef="let row"> {{row.padron.email}}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="user">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>User</mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.user}}</mat-cell>
+    <ng-container matColumnDef="telefono_padron">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Telefono</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.padron.telefono}}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="pass">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Pass</mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.pass}}</mat-cell>
+    <ng-container matColumnDef="empresa_padron">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Empresa</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.padron.manipuladora | empresa }}</mat-cell>
     </ng-container>
-
-    <ng-container matColumnDef="telefono">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Teléfono</mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.telefono}}</mat-cell>
+    
+    <ng-container matColumnDef="bodega_padron">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Bodega</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.padron.bodega | titlecase}}</mat-cell>
     </ng-container>
+    
+    
 
     <!-- actions -->
     <ng-container matColumnDef="actions">

@@ -8,6 +8,8 @@ import { Usuario } from '../shared/modelos/usuario';
 import { DataSource } from '@angular/cdk/collections';
 import { BehaviorSubject, fromEvent, merge, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { RespuestasService } from '../shared/servicios/respuestas.service';
+import { RespuestaCruzada } from '../shared/interfaces/encuesta.interface';
 
 @Component({
   selector: 'app-reporte',
@@ -16,16 +18,16 @@ import { map } from 'rxjs/operators';
 })
 export class ReporteComponent implements OnInit {
   displayedColumns = [
-    'rut',
-    'nombre',
-    'apellido',
-    'correo',
-    'user',
-    'pass',
-    'telefono',
-    'actions',
+    'fecha',
+    'analista',
+    'rut_padron',
+    'nombre_padron',
+    'correo_padron',
+    'telefono_padron',
+    'empresa_padron',
+    'bodega_padron',
   ];
-  exampleDatabase!: DataService | null;
+  exampleDatabase!: RespuestasService | null;
   dataSource!: ExampleDataSource | null;
   index!: number;
   rut!: number;
@@ -33,7 +35,7 @@ export class ReporteComponent implements OnInit {
   constructor(
     public httpClient: HttpClient,
     public dialog: MatDialog,
-    public dataService: DataService
+    public respuestasService: RespuestasService
   ) {}
 
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
@@ -55,24 +57,9 @@ export class ReporteComponent implements OnInit {
     this.paginator._changePageSize(this.paginator.pageSize);
   }
 
-  /*   // If you don't need a filter or a pagination this can be simplified, you just use code from else block
-    // OLD METHOD:
-    // if there's a paginator active we're using it for refresh
-    if (this.dataSource._paginator.hasNextPage()) {
-      this.dataSource._paginator.nextPage();
-      this.dataSource._paginator.previousPage();
-      // in case we're on last page this if will tick
-    } else if (this.dataSource._paginator.hasPreviousPage()) {
-      this.dataSource._paginator.previousPage();
-      this.dataSource._paginator.nextPage();
-      // in all other cases including active filter we do it like this
-    } else {
-      this.dataSource.filter = '';
-      this.dataSource.filter = this.filter.nativeElement.value;
-    }*/
 
   public loadData() {
-    this.exampleDatabase = new DataService(this.httpClient);
+    this.exampleDatabase = new RespuestasService(this.httpClient);
     this.dataSource = new ExampleDataSource(
       this.exampleDatabase,
       this.paginator,
@@ -90,7 +77,7 @@ export class ReporteComponent implements OnInit {
   }
 }
 
-export class ExampleDataSource extends DataSource<Usuario> {
+export class ExampleDataSource extends DataSource<RespuestaCruzada> {
   _filterChange = new BehaviorSubject('');
 
   get filter(): string {
@@ -101,11 +88,11 @@ export class ExampleDataSource extends DataSource<Usuario> {
     this._filterChange.next(filter);
   }
 
-  filteredData: Usuario[] = [];
-  renderedData: Usuario[] = [];
+  filteredData: RespuestaCruzada[] = [];
+  renderedData: RespuestaCruzada[] = [];
 
   constructor(
-    public _exampleDatabase: DataService,
+    public _exampleDatabase: RespuestasService,
     public _paginator: MatPaginator,
     public _sort: MatSort
   ) {
@@ -115,7 +102,7 @@ export class ExampleDataSource extends DataSource<Usuario> {
   }
 
   /** Connect function called by the table to retrieve one stream containing the data to render. */
-  connect(): Observable<Usuario[]> {
+  connect(): Observable<RespuestaCruzada[]> {
     this._sort = new MatSort();
     // Listen for any changes in the base data, sorting, filtering, or pagination
     const displayDataChanges = [
@@ -132,12 +119,12 @@ export class ExampleDataSource extends DataSource<Usuario> {
         // Filter data
         this.filteredData = this._exampleDatabase.data
           .slice()
-          .filter((usuario: Usuario) => {
+          .filter((usuario: RespuestaCruzada) => {
             const searchStr = (
-              usuario.rut +
-              usuario.nombre +
-              usuario.correo +
-              usuario.apellido
+              usuario.analista.nombre +
+              usuario.analista.apellido +
+              usuario.padron.rut +
+              usuario.padron.nombre
             ).toLowerCase();
             return searchStr.indexOf(this.filter.toLowerCase()) !== -1;
           });
@@ -161,33 +148,33 @@ export class ExampleDataSource extends DataSource<Usuario> {
   disconnect() {}
 
   /** Returns a sorted copy of the database data. */
-  sortData(data: Usuario[]): Usuario[] {
+  sortData(data: RespuestaCruzada[]): RespuestaCruzada[] {
     if (!this._sort.active || this._sort.direction === '') {
       return data;
     }
 
     return data.sort((a, b) => {
-      let propertyA: number | string = '';
-      let propertyB: number | string = '';
+      let propertyA: Date | number | string = '';
+      let propertyB: Date | number | string = '';
 
       switch (this._sort.active) {
-        case 'rut':
-          [propertyA, propertyB] = [a.rut, b.rut];
+        case 'fecha':
+          [propertyA, propertyB] = [a.hora_creacion, b.hora_creacion];
           break;
-        case 'nombre':
-          [propertyA, propertyB] = [a.nombre, b.nombre];
+        case 'analista':
+          [propertyA, propertyB] = [a.analista.nombre + a.analista.apellido , b.analista.nombre + b.analista.apellido];
           break;
-        case 'apellido':
-          [propertyA, propertyB] = [a.apellido, b.apellido];
+        case 'rut_padron':
+          [propertyA, propertyB] = [a.padron.rut, b.padron.rut];
           break;
-        case 'correo':
-          [propertyA, propertyB] = [a.correo, b.correo];
+        case 'nombre_padron':
+          [propertyA, propertyB] = [a.padron.nombre, b.padron.nombre];
           break;
-        case 'user':
-          [propertyA, propertyB] = [a.user, b.user];
+        case 'correo_padron':
+          [propertyA, propertyB] = [a.padron.email, b.padron.email];
           break;
-        case 'telefono':
-          [propertyA, propertyB] = [a.telefono, b.telefono];
+        case 'bodega_padron':
+          [propertyA, propertyB] = [a.padron.bodega, b.padron.bodega];
           break;
       }
 

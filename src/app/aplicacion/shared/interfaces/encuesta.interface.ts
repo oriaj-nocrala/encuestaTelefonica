@@ -3,6 +3,7 @@ export interface RespuestaCruzada {
   respuestas: Respuesta[];
   analista:   Analista;
   padron:     Padron;
+  hora_creacion: Date;
   __v:        number;
 }
 
