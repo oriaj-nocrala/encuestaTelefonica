@@ -1,3 +1,18 @@
+@font-face {
+  font-family: "MarkaziText";
+  src: url(../../assets/fonts/MarkaziText/MarkaziText-SemiBold.ttf);
+}
+
+.mat-toolbar{
+  font-family: "MarkaziText";
+  background-color: #D7E1E2;
+  font-size:50px;
+  color:#c21930;
+  text-shadow: 2px 2px white;
+  transition: transform 1s, color 1s, text-shadow 4s;
+  cursor:default;
+}
+
 .contenedor{
   display: table;
   position: absolute;
@@ -10,13 +25,4 @@
 .contenido{
   display: table-cell;
   vertical-align: middle;
-}
-
-.interior{
-  background-color: white;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left:5em;
-  padding-right:5em;
-  width: 200px;
 }

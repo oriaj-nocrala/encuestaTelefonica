@@ -1,15 +1,24 @@
+<mat-card>
+<mat-card-title>Login</mat-card-title>
+<mat-card-content>
+  <form #userLogin = "ngForm" [formGroup]="loginForm" novalidate (ngSubmit)="submit(userLogin.value)">
+    <p>
+      <mat-form-field>
+        <input type="input" matInput class="form-control" formControlName="userName" placeholder="Usuario">
+      </mat-form-field>
 
-<div class="text-center titulo-login">LOGIN
-<form #userLogin = "ngForm" [formGroup]="loginForm" novalidate (ngSubmit)="submit(userLogin.value)">
-  <div class="form-group">
-    <input type="input" class="form-control" formControlName="userName" placeholder="Usuario">
-  </div>
-  <div class="form-group">
-    <input type="password" class="form-control" formControlName="password" placeholder="Constraseña">
-  </div>
-  <div class="text-center div-btnsubmit">
-    <button mat-button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Ingresar</button>
-  </div>
-  <!-- <div class="text-center div-recuperar">Recuperar contraseña</div> -->
-</form>
-</div>
+    </p>
+    <p>
+      <mat-form-field>
+        <input type="password" matInput class="form-control" formControlName="password" placeholder="Constraseña">
+      </mat-form-field>
+
+    </p>
+    <div class="button">
+      <button mat-button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Ingresar</button>
+    </div>
+    <!-- <div class="text-center div-recuperar">Recuperar contraseña</div> -->
+  </form>
+</mat-card-content>
+
+</mat-card>

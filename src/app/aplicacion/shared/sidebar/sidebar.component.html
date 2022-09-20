@@ -4,6 +4,9 @@
     <div class="sidebar-header">
       <span id=logodelibest>DeliBest</span>
     </div>
+    <div>
+      <img src="../../../../assets/images/avatar_ap.png">
+    </div>
     <div id="usuario">
       <h1>{{auth.nombre + " " + auth.apellido}}</h1>
       <h3>{{auth.tipo | tipousuario}}</h3>
@@ -14,6 +17,10 @@
         <mat-list-item class="sidebar-brand" routerLink="reporte" routerLinkActive="active">
           <mat-icon mat-list-icon>assessment</mat-icon>
           Reporte
+        </mat-list-item>
+        <mat-list-item class="sidebar-brand" routerLink="estadisticas" routerLinkActive="active">
+          <mat-icon mat-list-icon>pie_chart</mat-icon>
+          Estadísticas
         </mat-list-item>
         <mat-list-item class="sidebar-brand" routerLink="asignar" routerLinkActive="active">
           <mat-icon mat-list-icon>assignment</mat-icon>
@@ -27,10 +34,6 @@
       <!-- <mat-list-item class="sidebar-brand" routerLink="empresas" routerLinkActive="active">
         <mat-icon mat-list-icon>meeting_room</mat-icon>
         Empresas
-      </mat-list-item>
-      <mat-list-item class="sidebar-brand" routerLink="estadisticas" routerLinkActive="active">
-        <mat-icon mat-list-icon>pie_chart</mat-icon>
-        Estadísticas
       </mat-list-item> -->
       <ng-template #anal>
         <mat-list-item class="sidebar-brand" routerLink="llamadas" routerLinkActive="active">
@@ -54,8 +57,5 @@
     <img id="logosistema" src="../../../../assets/images/LOGO_SistemaEncuestaManipuladoras.png"> -->
     <img id="logosistema" title="Alternar menú" src="../../../../assets/images/LOGO_SistemaEncuestaManipuladoras.png" (click)="sidenav.toggle()">
   </mat-toolbar>
-  <div id="routera">
-    <router-outlet></router-outlet>
-
-  </div>
+    <router-outlet id="routera"></router-outlet>
 </mat-sidenav-container>

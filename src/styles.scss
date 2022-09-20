@@ -1,10 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 body{
-  overflow-x: hidden;
   height:100%;
   width:100%;
 }
 html, body {
+  overflow: hidden;
   height: 100%;
 }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
@@ -23,6 +23,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 #fondo{
+  // --imageHeight: 1000px;
   width:100%;
   position: absolute;
   left: 0;
@@ -36,6 +37,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   perspective: 1000px;
   perspective-origin: 50% 50%;
   display: flex;
+  // height:calc(var(--imageHeight)*2);
 
   animation: scroll 100s linear infinite
 }

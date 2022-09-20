@@ -72,29 +72,7 @@ export class ReporteComponent {
   //[ 'katherine' , 'waleska', 'analista3']
   //[ katherine, waleska, analista3  ]
 
-  getDatosAnalistas(){    // this.dataService.getDatosAnalistas().pipe(
-
-    // const combinado = combineLatest(
-    //   this.dataService.getDatosAnalistas(),
-    //   this.dataService.getDatosRespuestas()
-    // ).subscribe(data => {
-    //   if()
-    // })
-
-
-
-    
-    //   switchMap( (anal) => {
-    //     let a:RespuestaCruzada[] = [];
-    //     anal.forEach( a => {
-    //       this.dataService.getDatosRespuestas();
-    //     })
-    //     return a;
-    //   })
-    // ).subscribe(console.log)
-    //No es lo que quiero...
-
-
+  getDatosAnalistas(){
       this.dataService.getCountRespuestasPorAnalista().subscribe({next: (data) => {
         data.forEach(d => {
           this.nombresAnalistas.push(`${d.analista.nombre} ${d.analista.apellido}`);

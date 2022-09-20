@@ -14,6 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSnackBarModule} from '@angular/material/snack-bar'; 
+import {MatCardModule} from '@angular/material/card'; 
 
 const MATERIAL_MODULES = [
   MatSidenavModule,
@@ -31,7 +32,8 @@ const MATERIAL_MODULES = [
   MatInputModule,
   MatSelectModule,
   MatRadioModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatCardModule
 ]
 
 @NgModule({
