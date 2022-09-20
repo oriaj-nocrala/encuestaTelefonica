@@ -63,8 +63,20 @@ export class EstadisticasComponent implements OnInit {
       // { data: [ 65, 59, 80, 81, 56, 55, 40 ], label: 'Series A' }, //El nombre del analista en el label y en la data separada por días
       // { data: [ 28, 48, 40, 19, 86, 27, 90 ], label: 'Series B' } //otro analista...
       {
-        label:"Analistas",
-        data:[]
+        label:"Llamadas",
+        data:[],
+        backgroundColor: [
+          '#1f77b4',
+          '#ff7f0e',
+          '#2ca02c',
+          '#d62728',
+          '#9467bd',
+          '#8c564b',
+          '#e377c2',
+          '#7f7f7f',
+          '#bcbd22',
+          '#17becf'
+        ]
       }
     ]
   };
