@@ -31,18 +31,19 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   top: 0;
   bottom: 0;
   z-index: -1;
-  background: url('./assets/images/trama_back_app.svg')  0% 0% repeat;
-  background-size:120px;
+  background: url('./assets/images/fondo.png')  0% 0% repeat;
+  // background-size:120px;
+  // background-color: #ccc;
   margin: 0 auto;
-  perspective: 1000px;
-  perspective-origin: 50% 50%;
+  // perspective: 1000px;
+  // perspective-origin: 50% 50%;
   display: flex;
   // height:calc(var(--imageHeight)*2);
 
-  animation: scroll 100s linear infinite
+  // animation: scroll 100s linear infinite
 }
-@keyframes scroll {
-  100% {
-    background-position:0px -1000px;
-  }
-}
+// @keyframes scroll {
+//   100% {
+//     background-position:0px -1000px;
+//   }
+// }

@@ -19,7 +19,7 @@
 
     <ng-container matColumnDef="fecha">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Fecha</mat-header-cell>
-      <mat-cell *matCellDef="let row">{{row.hora_creacion | date}}</mat-cell>
+      <mat-cell *matCellDef="let row">{{row.hora_creacion | date: 'dd/MM/yyyy hh:mm:ss a'}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="analista">
