@@ -4,13 +4,12 @@ import {Usuario} from '../modelos/usuario';
 import { Empresa } from '../modelos/empresa';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import { Analista, RespuestaXAnalista } from '../interfaces/encuesta.interface';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class DataService {
   //desarrollo
-  private readonly API_URL = 'http://localhost:3850/api';
-  //producción
-  // private readonly API_URL = 'https://delibest.encuestadigital.cl/api';
+  private readonly API_URL = environment.baseUrl;
 
   dataChange: BehaviorSubject<Usuario[]> = new BehaviorSubject<Usuario[]>([]);
   // empresas: BehaviorSubject<Empresa[]> = new BehaviorSubject<Empresa[]>([]);

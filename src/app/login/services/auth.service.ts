@@ -2,16 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable, of, tap } from 'rxjs';
 import { Usuario } from 'src/app/aplicacion/shared/modelos/usuario';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  //desarrollo
-  private baseUrl: string = 'http://localhost:3850/api';
-  //produccion
-  // private baseUrl: string = 'https://delibest.encuestadigital.cl/api';
+  baseUrl:string = environment.baseUrl;
 
   private _auth: Usuario | undefined;
 
@@ -25,11 +23,10 @@ export class AuthService {
     if(!localStorage.getItem('token')) {
       return of(false);
     }
-    console.log(localStorage.getItem('token'));
     return this.http.get<Usuario>(`${this.baseUrl}/getUsuarioPorId?id=${localStorage.getItem('token')}`)
     .pipe( map (auth => {
       this._auth = auth;
-      console.log(auth);
+      // console.log(auth);
       return true;
     }));
   }

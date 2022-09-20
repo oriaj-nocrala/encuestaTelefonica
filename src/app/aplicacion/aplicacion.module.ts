@@ -1,4 +1,3 @@
-import { ReporteModule } from './reporte/reporte.module';
 import { AuthService } from './../login/services/auth.service';
 import { CommonModule } from '@angular/common';
 import { DataService } from './shared/servicios/data.service';
@@ -6,7 +5,6 @@ import { NgModule } from '@angular/core';
 import { AplicacionComponent } from './aplicacion.component';
 import { SharedModule } from './shared/shared.module';
 import { AplicacionRoutingModule } from './aplicacion-routing.module';
-import { ReporteComponent } from './reporte/reporte.component';
 import { AsignarComponent } from './asignar/asignar.component';
 import { LlamadasComponent } from './llamadas/llamadas.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
@@ -20,13 +18,16 @@ import { EditDialogComponent } from './usuarios/editar/editar.component';
 import { DeleteDialogComponent } from './usuarios/eliminar/eliminar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { EmpresaPipe } from './pipes/empresa.pipe';
+import { ReporteComponent } from './reporte/reporte.component';
+import { NgChartsModule } from 'ng2-charts';
+
 
 
 
 @NgModule({
   declarations: [
     AplicacionComponent,
-    // ReporteComponent,
+    ReporteComponent,
     AsignarComponent,
     LlamadasComponent,
     UsuariosComponent,
@@ -46,7 +47,7 @@ import { EmpresaPipe } from './pipes/empresa.pipe';
     FlexLayoutModule,
     HttpClientModule,
     CommonModule,
-    ReporteModule
+    NgChartsModule
   ],
   providers:[DataService]
 })
