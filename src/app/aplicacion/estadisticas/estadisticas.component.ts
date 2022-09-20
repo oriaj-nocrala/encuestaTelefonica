@@ -1,8 +1,13 @@
 import { DataService } from './../shared/servicios/data.service';
-import { Component, OnInit, ViewChild} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
-import {Analista, Respuesta, RespuestaCruzada, RespuestaXAnalista} from '../shared/interfaces/encuesta.interface'
+import {
+  Analista,
+  Respuesta,
+  RespuestaCruzada,
+  RespuestaXAnalista,
+} from '../shared/interfaces/encuesta.interface';
 
 import DataLabelsPlugin from 'chartjs-plugin-datalabels';
 import { Observable, switchMap, combineLatest } from 'rxjs';
@@ -11,48 +16,37 @@ import { MatLabel } from '@angular/material/form-field';
 @Component({
   selector: 'app-estadisticas',
   templateUrl: './estadisticas.component.html',
-  styleUrls: ['./estadisticas.component.scss']
+  styleUrls: ['./estadisticas.component.scss'],
 })
-
 export class EstadisticasComponent implements OnInit {
-
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
 
-  progress:number = 45;
-  data:RespuestaCruzada[] = [];
-  fecha:Date = new Date();
+  progress: number = 45;
+  data: RespuestaCruzada[] = [];
+  fecha: Date = new Date();
   fechas: Date[] = [];
-  analistas:Analista[] = [];
+  analistas: Analista[] = [];
 
-  nombresAnalistas:string[] = [];
-  
+  nombresAnalistas: string[] = [];
 
-  constructor( private dataService: DataService) { }
-  
-  
+  constructor(private dataService: DataService) {}
+
   ngOnInit(): void {
     this.getDatosAnalistas();
     this.getDatosRespuestas();
 
-    
-    for(let i = 1; i <= 7; i++){
-      this.fechas.push( new Date(new Date().setDate(new Date().getDate()-i) ) ); //El día de ayer.
+    for (let i = 1; i <= 7; i++) {
+      this.fechas.push(new Date(new Date().setDate(new Date().getDate() - i))); //El día de ayer.
     }
-    for(let i = 0; i < 7; i++)
-    console.log(this.fechas[i]);
-  }
-  
-  procesarDatos(data:any[]){
-    
-  }
-  
-  clickBoton(){
-    console.log(this.data[0].analista._id);
-    this.data.forEach(d => {
-      
-    })
+    for (let i = 0; i < 7; i++) console.log(this.fechas[i]);
   }
 
+  procesarDatos(data: any[]) {}
+
+  clickBoton() {
+    console.log(this.data[0].analista._id);
+    this.data.forEach((d) => {});
+  }
 
   public barChartLegend = true;
   public barChartPlugins = [DataLabelsPlugin];
@@ -63,8 +57,8 @@ export class EstadisticasComponent implements OnInit {
       // { data: [ 65, 59, 80, 81, 56, 55, 40 ], label: 'Series A' }, //El nombre del analista en el label y en la data separada por días
       // { data: [ 28, 48, 40, 19, 86, 27, 90 ], label: 'Series B' } //otro analista...
       {
-        label:"Llamadas",
-        data:[],
+        label: 'Llamadas',
+        data: [],
         backgroundColor: [
           '#1f77b4',
           '#ff7f0e',
@@ -75,64 +69,65 @@ export class EstadisticasComponent implements OnInit {
           '#e377c2',
           '#7f7f7f',
           '#bcbd22',
-          '#17becf'
-        ]
-      }
-    ]
+          '#17becf',
+        ],
+      },
+    ],
   };
 
   //[ 'katherine' , 'waleska', 'analista3']
   //[ katherine, waleska, analista3  ]
 
-  getDatosAnalistas(){
-      this.dataService.getCountRespuestasPorAnalista().subscribe({next: (data) => {
-        data.forEach(d => {
-          this.nombresAnalistas.push(`${d.analista.nombre} ${d.analista.apellido}`);
+  getDatosAnalistas() {
+    this.dataService.getCountRespuestasPorAnalista().subscribe({
+      next: (data) => {
+        data.forEach((d) => {
+          this.nombresAnalistas.push(
+            `${d.analista.nombre} ${d.analista.apellido}`
+          );
           this.barChartData.datasets[0].data.push(d.count);
           console.log(this.barChartData.datasets[0]);
-        })
+        });
         this.chart?.update();
-      }, error: console.log
-    })
+      },
+      error: console.log,
+    });
   }
 
-
-  getDatosRespuestas(){
-    this.dataService.getDatosRespuestas().subscribe({next: (data:RespuestaCruzada[])=>{
-      data.forEach((d)=>{
-        
-      })
-    },error: err=>console.log});
+  getDatosRespuestas() {
+    this.dataService.getDatosRespuestas().subscribe({
+      next: (data: RespuestaCruzada[]) => {
+        data.forEach((d) => {});
+      },
+      error: (err) => console.log,
+    });
   }
 
-  nombresAnalista(){
-
-  }
-  calcularTotalAnalista(analista_id:string):number{
+  nombresAnalista() {}
+  calcularTotalAnalista(analista_id: string): number {
     return 0;
   }
-  
 
   public barChartOptions: ChartConfiguration['options'] = {
     responsive: true,
-    scales:{
-      xAxes:{},
-      yAxes:{
+    scales: {
+      xAxes: {},
+      yAxes: {
         ticks: {
-          display:true,
-          callback: label => (Number(label) % 1 === 0)? label: ''
-        }
-      }
+          display: true,
+          callback: (label) => (Number(label) % 1 === 0 ? label : ''),
+        },
+      },
     },
     plugins: {
       legend: {
-        display:true,
+        display: true,
       },
       datalabels: {
-        anchor:'end',
-        align:'end'
-      }
-    }
+        anchor: 'end',
+        align: 'end',
+      },
+    },
   };
 
   public actualizar(): void {
@@ -148,12 +143,23 @@ export class EstadisticasComponent implements OnInit {
 
     this.chart?.update();
   }
-  public chartClicked({ event, active }: { event?: ChartEvent, active?: {}[] }): void {
+  public chartClicked({
+    event,
+    active,
+  }: {
+    event?: ChartEvent;
+    active?: {}[];
+  }): void {
     console.log(event, active);
   }
 
-  public chartHovered({ event, active }: { event?: ChartEvent, active?: {}[] }): void {
+  public chartHovered({
+    event,
+    active,
+  }: {
+    event?: ChartEvent;
+    active?: {}[];
+  }): void {
     // console.log(event, active);
   }
-
 }
