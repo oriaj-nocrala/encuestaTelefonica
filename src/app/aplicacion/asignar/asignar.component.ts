@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Empresa } from '../shared/modelos/empresa';
 import { Usuario } from '../shared/modelos/usuario';
 import { AuthService } from 'src/app/login/services/auth.service';
+import { Asignaciones } from '../shared/interfaces/encuesta.interface';
 
 export interface Asignacion {
   analista: string,
@@ -34,7 +35,7 @@ export class AsignarComponent implements OnInit {
   bodegas: any[] = [];
   bodegasSelects: any[] = [];
   analistas:Usuario[] = [];
-  asignaciones:any[] = [];
+  asignaciones:Asignaciones[] = [];
   datos: any[] = [];
 
 

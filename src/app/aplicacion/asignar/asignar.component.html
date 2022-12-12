@@ -31,7 +31,7 @@
     </ng-container>
     <ng-container matColumnDef="hechos">
       <th mat-header-cell *matHeaderCellDef>Bodega asignada</th>
-      <td mat-cell *matCellDef="let element, let i = index">{{element.bode[0].nombre | titlecase}}</td>
+      <td mat-cell *matCellDef="let element, let i = index">{{element.bode[0].manipuladora  + ' ' + element.bode[0].nombre | titlecase}}</td>
     </ng-container>
     <!-- <ng-container matColumnDef="total">
       <th mat-header-cell *matHeaderCellDef>Total</th>

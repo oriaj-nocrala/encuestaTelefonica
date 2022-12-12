@@ -3,7 +3,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Usuario } from '../modelos/usuario';
 import { Empresa } from '../modelos/empresa';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Analista, RespuestaXAnalista } from '../interfaces/encuesta.interface';
+import { Analista, Asignaciones, RespuestaXAnalista } from '../interfaces/encuesta.interface';
 import { environment } from 'src/environments/environment';
 
 @Injectable()
@@ -113,8 +113,8 @@ export class DataService {
     );
   }
 
-  getDatosAsignaciones(): Observable<any[]> {
-    return this.httpClient.get<any[]>(`${this.API_URL}/getDatosAsignaciones`);
+  getDatosAsignaciones(): Observable<Asignaciones[]> {
+    return this.httpClient.get<Asignaciones[]>(`${this.API_URL}/getDatosAsignaciones`);
   }
 
   getDatosPadron(analista: any): Observable<any[]> {

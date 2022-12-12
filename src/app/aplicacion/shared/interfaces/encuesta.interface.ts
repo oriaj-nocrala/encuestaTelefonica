@@ -46,3 +46,33 @@ export interface Respuesta {
   pregunta:  string;
   respuesta: string;
 }
+
+
+export interface Asignaciones {
+  _id:            string;
+  rut:            number;
+  user:           string;
+  pass:           string;
+  nombre:         string;
+  apellido:       string;
+  correo:         string;
+  telefono:       number;
+  fecha_creacion: Date;
+  tipo:           string;
+  __v:            number;
+  asig:           Asig[];
+  bode:           Bode[];
+}
+
+export interface Asig {
+  _id:      string;
+  analista: string;
+  bodega:   string;
+  __v?:     number;
+}
+
+export interface Bode {
+  _id:          string;
+  nombre:       string;
+  manipuladora: string;
+}
